@@ -1,0 +1,358 @@
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis" />
+<title>library_a2</title>
+<link rel="stylesheet" type="text/css" href="css/health.css" />
+<script type="text/javascript" src="common/js/validate.js"></script>
+<script type="text/javascript" src="common/js/calendar.js"></script>
+
+<script type="text/javascript" src="js/smarty_ajax.js"></script>
+
+</head>
+<body>
+<table  border="0" align="center" cellpadding="0" cellspacing="0" class="tb_main">
+  <tr>
+    <td align="left" valign="top">
+    <table width="100%" height="65" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="10" align="left" valign="top" class="logo_bg_left">&nbsp;</td>
+          <td width="884" align="left" valign="top" class="logo_bg_midle"><img src="images/logo.png" width="147" height="60" alt="Admin" /></td>
+          <td width="75" align="left" valign="top" class="logo_bg_midle"><a href="admin.php?section=login&action=logout"><img src="images/btn_logout.png" width="48" height="60" border="0" alt="Logout" /></a></td>
+          <td width="11" align="left" valign="top" class="logo_bg_right">&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="23%" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="1">
+      <tr>
+        <td valign="bottom"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td class="p6red_bg_left">&nbsp;</td>
+              <td height="30" align="center" class="p6red_bg_midle"><span class="black">入会・退会管理</span> </td>
+              <td class="p6red_bg_right">&nbsp;</td>
+            </tr>
+        </table></td>
+
+
+
+      </tr>
+      <tr>
+        <td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="leftmenu_bg">
+            <tr>
+              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="95%">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td class="black_left_menu"><a href="admin.php?section=membermange&action=waiting">A.入会待ち（審査中）のユーザー </a><br />
+                      <a href="admin.php?section=membermange&action=hold">B.審査保留中のユーザー </a> <br />
+                      <a href="admin.php?section=membermange&action=suspend">C.中止者（利用停止中）のユーザー</a> <br />
+                      <a href="admin.php?section=membermange&action=withdraw_list">D.退会者の履歴 </a></td>
+                  </tr>
+                  <tr>
+                    <td width="10">&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td height="35" valign="bottom" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="p6red_bg_left">&nbsp;</td>
+                    <td height="30" align="center" class="p6red_bg_midle"><span class="black">会員DB管理</span> </td>
+                    <td class="p6red_bg_right">&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td align="left"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="95%">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td class="black_left_menu"><a href="admin.php?section=member&action=list_member">A.会員データ一覧</a> <br />
+                      <a href="admin.php?section=member&action=search">B.会員検索・編集 member</a><br />
+                      <!--<a href="admin.php?section=staticpage&page=health_9">C.会員データの修正・変更・削除<br />
+                      （退会処理） </a<br />-->
+                      <a href="admin.php?section=member&action=add_member">C.新規会員の追加  </a><br />
+                      <a href="admin.php?section=member_csv">D.会員データのダウンロード </a></td>
+                  </tr>
+                  <tr>
+                    <td width="10">&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td height="35" valign="bottom" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="p6red_bg_left">&nbsp;</td>
+                    <td height="30" align="center" class="p6red_bg_midle"><span class="black">会員モニター管理 </span> </td>
+                    <td class="p6red_bg_right">&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="95%">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td class="black_left_menu"><a href="admin.php?section=member_monitor&action=review_awaiting">A.審査待ちの発言内容</a>  <br />
+                      <a href="admin.php?section=member_monitor&action=search_remove">B.発言内容の検索・修正・削除 </a><br />
+                      <a href="admin.php?section=member_monitor&action=search">C.発言内容のダウンロード </a></td>
+                  </tr>
+                  <tr>
+                    <td width="10">&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td height="35" align="left" valign="bottom" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="p6red_bg_left">&nbsp;</td>
+                    <td height="30" align="center" class="p6red_bg_midle"><span class="black">メルマガ管理 </span> </td>
+                    <td class="p6red_bg_right">&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+            
+            
+            <tr>
+              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="95%">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <!--<td class="black_left_menu"><a href="admin.php?section=mailmag&action=users">A.メルマガ会員一覧 </a><br />
+                      <a href="admin.php?section=mailmag&action=users_search">B.メルマガ会員の検索・修正・削除  </a><br />
+                      <a href="admin.php?section=mailmag&action=add_maguser">C.新規メルマガ会員の追加</a>  <br />
+                      <a href="admin.php?section=mailmag&action=register">D.メルマガ発信 </a><br />
+                      <a href="admin.php?section=mailmag&action=mag_list">E.メルマガ一覧</a>
+                      <a href="admin.php?section=staticpage&page=health_27">E.メルマガ配信の予約解除・変更  </a><br />
+                     <a href="admin.php?section=staticpage&page=health_28"> F.メルマガ会員データのダウンロード </a><br />
+                      </td>-->
+                      
+                      <td class="black_left_menu"><a href="admin.php?section=mailmag&action=users">A. メルマガ会員一覧 (BBS)  </a><br />
+            <a href="admin.php?section=mailmag&action=non_users">B. メルマガ会員一覧 (一般)   </a><br />
+            <a href="admin.php?section=mailmag&action=users_search">C. メルマガ会員の検索・修正・削除（BBS)</a><br />
+            <a href="admin.php?section=mailmag&action=users_search&non=true">D. メルマガ会員の検索・修正・削除(一般） </a><br />
+            <a href="admin.php?section=mailmag&action=register">E. メルマガ発信（BBS) </a><br />
+            <a href="admin.php?section=mailmag&action=register&non=true">F. メルマガ発信（一般) </a><br />
+            <a href="admin.php?section=mailmag&action=mag_list">G. メルマガ一覧(BBS) </a><br />
+            <a href="admin.php?section=mailmag&action=mag_list&non=true">H. メルマガ一覧(一般) </a><br />
+            <a href="admin.php?section=settings">I. 管理者設定</a>
+
+</td>
+</tr>
+
+             <tr>
+                    <td width="10">&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+            
+            <tr>
+              <td height="35" align="left" valign="bottom" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="p6red_bg_left">&nbsp;</td>
+                    <td height="30" align="center" class="p6red_bg_midle"><span class="black">カート管理 </span> </td>
+                    <td class="p6red_bg_right">&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="95%">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>                      
+                      <td class="black_left_menu"><a href="admin.php?section=cart">A. カート管理  </a><br />
+<a href="admin.php?section=shipcost">B. 送料設定</a>
+             </td>
+             </tr>
+             <tr>
+                    <td width="10">&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+
+            <tr>
+              <td height="35" align="left" valign="bottom" bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="p6red_bg_left">&nbsp;</td>
+                    <td height="30" align="center" class="p6red_bg_midle"><span class="black">図書室管理 </span> </td>
+                    <td class="p6red_bg_right">&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="95%">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>                      
+                      <td class="black_left_menu"><a href="admin.php?section=">A. 検索・修正・削除・閲覧</a><br />
+            <a href="admin.php?section=">B. 貸出返却  </a><br />
+            <a href="admin.php?section=">C. 図書の追加</a><br />
+            <a href="admin.php?section=">D. web掲載管理</a><br />
+            <a href="admin.php?section=">E. 図書室データ・ダウンロード </a>
+             </td>
+             </tr>
+             <tr>
+                    <td width="10">&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+              </table></td>
+            </tr>
+
+        </table></td>
+      </tr>
+    </table></td>
+    <td width="1%" align="left" valign="top">&nbsp;</td>
+    <td width="76%" align="left" valign="top">
+
+<script language="javascript">
+function form_reset(){
+document.frm_search.reset();
+
+}
+
+</script>
+
+
+<div class="first_page">
+     <form name='frm_search' method='POST' action='/admin.php' id='frm_search'>
+<input type='hidden' name='section' id='section' value="member" />
+<input type='hidden' name='action' id='action' value="list_member" />
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="7" height="33" class="p2red_bg_left"></td>
+          <td width="836" height="33" class="p2red_bg_midle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td><span class="verdana_big">A.</span><span lang="ja" xml:lang="ja">検索・修正・削除・閲覧</span><span lang="EN-US" xml:lang="EN-US"></span></td>
+              <td width="23%" align="right">図書室管理</td>
+            </tr>
+          </table></td>
+          <td width="7" height="33" class="p2red_bg_right"></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+          <table width="100%" height="22" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="67%" height="35" valign="middle" class="black">&nbsp;</td>
+              <td width="33%" align="right" valign="bottom" class="black">A-2</td>
+            </tr>
+          </table>
+          </td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>      
+          <td colspan="3" align="left" valign="top">
+<table width="100%" border="1" cellpadding="4" cellspacing="0" class="a2_table">
+            <tr>
+              <td width="5%" class="cell_blue1">&nbsp;</td>
+              <td width="7%" class="cell_blue1">連番</td>
+              <td width="15%" class="cell_blue1">ISBN</td>
+              <td width="33%" class="cell_blue1">タイトル</td>
+              <td width="10%" class="cell_blue1">著作名</td>
+              <td width="10%" class="cell_blue1">編集・監修</td>
+              <td width="8%" class="cell_blue1">定価</td>
+              <td width="12%" class="cell_blue1">発売元</td>
+            </tr>
+            <tr>
+              <td class="cell_blue2_center"><input name="numbers" type="checkbox" /></td>
+              <td class="cell_blue2">100</td>
+              <td class="cell_blue2">9784826910255</td>
+              <td class="cell_blue2">森田正馬全集1</td>
+              <td class="cell_blue2">森田正馬</td>
+              <td class="cell_blue2"></td>
+              <td class="cell_blue2">8,500</td>
+              <td class="cell_blue2">白揚社</td>
+            </tr>
+            <tr>
+              <td class="cell_blue3_center"><input name="numbers" type="checkbox" /></td>
+              <td class="cell_blue3">101</td>
+              <td class="cell_blue3">9784826910256</td>
+              <td class="cell_blue3">森田正馬全集2</td>
+              <td class="cell_blue3">森田正馬</td>
+              <td class="cell_blue3"></td>
+              <td class="cell_blue3">8,500</td>
+              <td class="cell_blue3">白揚社</td>
+            </tr>
+            <tr>
+              <td class="cell_blue2_center"><input name="numbers" type="checkbox" /></td>
+              <td class="cell_blue2">102</td>
+              <td class="cell_blue2">9784826910257</td>
+              <td class="cell_blue2">森田正馬全集3</td>
+              <td class="cell_blue2">森田正馬</td>
+              <td class="cell_blue2"></td>
+              <td class="cell_blue2">8,500</td>
+              <td class="cell_blue2">白揚社</td>
+            </tr>
+           </table>
+</td>
+        </tr>
+
+        <tr>
+          <td height="10" colspan="3"></td>
+          </tr>
+        <tr>
+          <td colspan="3">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="32%"></td>
+              <td width="20%"><input type="image" src="images/lib_browse.png" width="97" height="27" border="0" alt="閲覧・編集" class="padding_top" /></td>
+              <td width="48%"><a href="#11223344" onclick="javascript:form_reset();"><img src="images/lib_reset.png" width="97" height="27" border="0" alt="リセット" class="padding_top" /></a></td>
+            </tr>
+          </table>
+</td>
+        </tr>
+      </table>
+      </form>
+    </div></td>
+  </tr>
+</table>
+</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">&nbsp;</td>
+  </tr>
+</table>
+
+<script language="javascript">
+  function submitMe(frm)
+  {
+    frm2=document.getElementById(frm);
+     if (checkForm(frm2))
+     {
+      frm2.submit();
+     }
+     else{return false;}
+  }
+  
+</script>
+</body>
+</html>

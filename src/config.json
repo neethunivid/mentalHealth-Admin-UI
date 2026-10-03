@@ -1,0 +1,11 @@
+
+{
+  "api":{
+      "url":"http://localhost:9090/",
+      "key":""
+  },
+  "libraryapi":{
+    "url":"http://localhost:9091/",
+    "key":""
+  }
+}
