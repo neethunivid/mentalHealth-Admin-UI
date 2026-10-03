@@ -1,0 +1,269 @@
+$gridBorderWidth:1px;
+$tableBorderWidth:2px;
+$gridBorderColor:white;
+$tableBorderColor:white;
+
+
+
+@mixin addBorderToTable{
+    border: $gridBorderWidth solid $tableBorderColor;
+}
+
+.Reservation-Table-root{
+    @include addBorderToTable;
+    
+    &-border-left{
+        border-left: $tableBorderWidth solid $tableBorderColor;
+    }
+    &-border-top{
+        border-top: $tableBorderWidth solid $tableBorderColor; ;
+    }
+    &-border-right{
+        border-right: $tableBorderWidth solid $tableBorderColor;
+      }
+      &-border-bottom{
+        border-bottom: $tableBorderWidth solid $tableBorderColor !important;
+      }
+      &-border-right-bottom{
+        border-right: $tableBorderWidth solid $tableBorderColor;
+         border-bottom: $tableBorderWidth solid $tableBorderColor !important;
+      }
+      &-border-right-top{
+       
+        border-right:$tableBorderWidth solid $tableBorderColor !important;
+        border-top:  $tableBorderWidth solid $tableBorderColor !important; 
+        
+      }
+      label{
+        padding: 2px;
+        display: inline-block; 
+        font-family:'Times New Roman';
+         
+      }
+  
+      // &-col0{
+      //   // width:20%
+      // }
+      &-col1{
+    // width:0.03%;
+    // height: 5%;
+        width: 7.5%;
+      }
+       &-col2{
+    width:2.9%
+      }
+    //    &-col3{
+    // // width:0.01
+    //   }
+    //    &-col4{
+    // // width:6%
+    //   }
+    //    &-col5{
+    // // width:10%
+    //   }
+    //    &-col6{
+    // // width:4%
+    //   }
+       &-col7{
+    width:1%
+      }
+       &-col8{
+    width:10%
+      }
+       &-col9{
+    width:33.33%
+      }
+       &-col10{
+    width:5%
+      }
+       &-col11{
+    width:5%
+      }
+
+      &-selected{
+        cursor: pointer;
+        background-color: yellow;
+        font-size: 12px!important;
+        
+      }
+
+      .Reservationheaderbold{
+        background-color: #385E8A!important;
+        font-weight: 700!important;
+        font-size: 14px!important;
+        text-align: center!important;
+        color: white!important;
+        border-bottom: 2px solid;
+      }
+
+}
+
+.remarksconfirmHeader{
+  background-color: #385E8A;
+;
+  color: white;
+  text-align: center;
+  padding-left: 20px;
+  border-left:    $tableBorderWidth solid $tableBorderColor;;
+}
+
+.cell-paddingreserv {
+  text-align: center !important;
+  padding: 3px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  font-family: "Times New Roman" !important;
+  }
+
+  .Reservation-Tablebody-background{
+    background-color: #D1E1FA;
+    &:hover {
+      background-color: #D1E1FA !important; 
+      color: inherit; 
+    } 
+  }
+
+  .Reservation_red_font{
+    color: red;
+  }
+  
+
+  .reservation_slot_text_red{
+    color: red;
+  }
+
+  .reservation_slot_text_black{
+    color: black;
+  }
+
+  .reservation_slot_time_slot{
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+    font-size: 10px;
+  }
+
+  //========================reservation_list slot form =========================================================================
+
+  .reservation_form_padding{
+    padding-left: 8%;
+  }
+
+  .reservation_form_input1{
+    width:240px;
+  }
+
+  .reservation_form_input2{
+    width:340px;
+  }
+
+  .reservation_form_font16{
+    font-size: 16px;
+  }
+
+  .reservation_form_button_align{
+    text-align: center;
+    display: flex;
+    padding-left: 35%;
+    
+    // padding-left: 3px;
+  }
+  .reservation_form_sizebox{
+width: 5px;
+  }
+
+  .reservation_formSubmitButton{
+    background-color: #349ACF;
+    border-radius: 36px;
+    border-color: #349ACF;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+  }
+
+
+
+
+  //============Registration counselors=====================
+
+  .registraion_counselors_padding{
+    margin-left:5%;
+    text-align: center;
+  }
+
+  .registration_counselors_button_align{
+    align-items: center;
+ margin-left: 36.5%;
+  }
+  .registration_counselors_button{
+    margin-right: 1%;
+    background-color: #349ACF;
+    border-radius: 36px;
+    border-color: #349ACF;
+    color: white;
+    padding: 5px 25px;
+    text-align: center;
+  }
+  .reserve-list-bgblue{
+    background-color:#B7CCE6;
+    &:hover {
+      background-color: #B7CCE6 !important; 
+      color: inherit; 
+    } 
+   }
+   .reserlist-list-bgpink{
+    background-color:#F2DADA;
+    &:hover {
+      background-color: #F2DADA !important; 
+      color: inherit; 
+    } 
+   }
+   .reserveheadergridcell_blue1 {
+    border: 1px solid #ffffff;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #3b5f88;
+}
+.black_text{
+  font-family:'Times New Roman';
+  color: #000000;
+  font-size:16px;
+  }
+  .Removetext-underline {
+    color:blue;
+    text-decoration: underline !important;
+    cursor: pointer;
+    font-family:'Times New Roman';
+    font-size:16px;
+  }
+  .btn_align_centre{
+    display: flex;
+    justify-content: center;
+    
+
+}
+.div_width{
+    width: 50px;
+}
+.reservation-list-padding{
+  padding-left: 10px;
+  padding-right: 5px;
+  padding-top: 10px;
+}
+.reservation-button-padding{
+  padding: 10px;
+}
+.reservation-content-marginleft{
+  margin-left: 10px;
+}
+.reservation-date-padding{
+  padding-left: 10px;
+  padding-right: 5px;
+}
+#errormessage{
+  font-size: large;
+  font-weight: bolder;
+  padding-top:10px;
+  color:red;
+}
