@@ -1,0 +1,93 @@
+.link {
+    color:blue  !important;
+        }
+        .bg_sixt_TableCell{
+            background-color: #E1EFFF;
+            &:hover {
+              background-color:  #E1EFFF !important; 
+              color: inherit; 
+            }
+            
+            
+            }
+            
+          .dgrid_column-cell {
+            border:0.1px solid #729BCB !important;
+            padding: 5px !important;
+            }
+          .sixth_bdr_top_bottom{
+           // border-bottom:1px solid  #729BCB !important;
+            border-left:0.5px solid  #729BCB !important;
+            border-right: 0.5px solid  #729BCB !important;
+            border-top: 0.5mm solid  #729BCB !important;
+            
+            }
+            .bg_white_tablecell{
+                background-color: white;
+                &:hover {
+                  background-color: transparent !important; 
+                  color: inherit; 
+                } 
+               
+                }
+                
+                .mg_top{
+                    padding-top: 5px;
+                   }
+                   .text_grid{
+                    flex-direction: row;
+                    display: flex;
+                   }
+                   .txtverdana{
+                    font-family:Verdana, Arial, Helvetica, sans-serif;
+                    font-size:11px;
+                    width: 87%;
+                    padding-left: 5px;
+                    color: black;
+                    
+                    }
+                    .txtverdana1{
+                      font-family:Verdana, Arial, Helvetica, sans-serif;
+                      font-size:11px;
+                      color: black;
+                      
+                      
+                      }
+                      .griddwnbtn {
+                        display: grid;
+                        grid-gap: 5px;
+                        grid-auto-flow: column;
+                        width: 100px;
+                        margin: 0 0 0 auto; //added
+                        padding-right: 200px;
+                        padding-top: 10px;
+                      }
+                      .mr_lft{
+                        padding-left: 180px;
+                      }
+                      .pagination-button {
+                        background: none;
+                        border: none;
+                        color: #000; /* Set the color you want for the numbers */
+                        font-size: 11px; 
+                        font-family: Verdana, Arial, Helvetica, sans-serif;/* Adjust the font size as desired */
+                        cursor: pointer;
+                        margin: 0 5px; /* Add some space between the numbers */
+                        text-decoration: underline; /* Optional, add underline to numbers if you like */
+                      }
+                      .custom-btn{
+                        border: none;
+                      }
+                    .mrg_top{
+                      padding-top: 20px;
+                    }
+                    .bdr_text_smalltel{
+                      height:16px;
+                      width:42px;
+                      font-size:12px;
+                      color:#000000;
+                      border:1px solid #4A7EBB;
+                      }
+                      .data-grid-container {
+                        overflow: auto;
+                      }
