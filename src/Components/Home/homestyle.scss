@@ -1,0 +1,25 @@
+.logoutlink{
+     display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    }
+#contenttop {
+  padding: 3px 0 3px 10px;
+  color: #4779cf;
+  font-size: 1.8em;
+  font-weight: 500;
+  text-align: left;
+  border: 1px solid #cccccc;
+  background: #bbd4ef url(../../assets/images/title1.gif) repeat-x;
+}
+.content {
+  position: relative;
+  border: 1px solid #cccccc;
+  
+}
+.gridcontent{
+   padding: 5px;
+    height:113px;
+    width:145px;
+
+}

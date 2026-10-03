@@ -1,0 +1,517 @@
+.library-width-3{
+    width: 3%;
+}
+
+.library-width-15{
+    width: 15%;
+}
+
+.library-width-82{
+    width: 82%;
+}
+.library-width-70{
+    width: 53%;
+}
+.library-width-20{
+    width: 20%;
+}
+.library-width-32{
+    width: 32%;
+}
+.library-width-48{
+    width: 48%;
+}
+
+.library-width-1{
+    width: 1%;
+}
+
+.library-text-bold{
+    font-weight: bold;
+}
+
+.library-pad-left-right{
+    padding-left:5px ;
+    padding-right: 2px;
+}
+
+.library-text-input1{
+    height: 22px;
+    height: 22px;
+    width: 170px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    color: #000000;
+    border: 1px solid #4A7EBB;
+}
+.library-text-input2{
+    height: 22px;
+    width: 500px;
+    font-size: 12px;
+    color: #000000;
+    border: 1px solid #4A7EBB;
+}
+
+
+
+library-text-example{
+    padding-left: 2%;
+}
+
+library-align-center{
+    text-align: center;
+    align-items: center;
+}
+
+.library-button-32{
+    width: 32%;
+}
+
+.library-button-20{
+    width: 20%;
+}
+
+.library-button-48{
+    width: 48%;
+}
+
+.library_preview_inpBg{
+    background-color: #f1f1f1!important;
+}
+
+//============================<Management of Library>=====================
+.management_flex_end{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.management_checkbox{
+    margin-top: 2px;
+}
+
+.management_date_picker{
+    height: 14px;
+    width: 100px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: #000000;
+    border: 1px solid #4A7EBB;
+}
+
+.library_flex_end{
+    display: flex;
+    justify-content: flex-end;
+}
+
+//===============================<Registration Lending Return>=================
+.registration_lending_return_textEnd{
+    display: flex;
+    justify-content: flex-end;
+}
+.registration_lending_return_table_padd{
+    padding:3% !important ;
+}
+.registration_lending_return_input{
+    height: 22px;
+    width: 170px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    color: #000000;
+    border: 1px solid #4A7EBB;
+}
+.registration_lending_return_paddTop{
+    padding-top:0.8%;
+}
+
+.registration_lending_return_no_row{
+    padding-top: 25px;
+    height: 100%;
+    text-align: center;
+}
+//booklist
+.searchbook_content{
+    margin-top: 10px;
+    // justify-content: center;
+    // text-align: center;
+    margin-bottom: 10px;
+    margin-left: 40px;
+
+}
+.book-list-bg1{
+    background-color:#D4E1F5;
+    &:hover {
+      background-color: #D4E1F5 !important; 
+      color: inherit; 
+    } 
+   }
+.book-list-bg2{
+    background-color:#E4EBF5;
+    &:hover {
+      background-color: #E4EBF5 !important; 
+      color: inherit; 
+    } 
+   }
+.booklist_header_background{
+    background-color: #3b5f88;
+    text-align: center;
+    padding-left: 20px;
+    }
+.white_headertext{
+      font-family:Verdana, Arial, Helvetica, sans-serif;
+      color:#FFFFFF;
+      font-size: 13px;
+      }
+.gridcolumn-cells {
+        border: 1px solid #ffff !important;
+        padding: 1px !important;
+      }
+.wordprewrap{
+ white-space: 'pre-wrap';
+ word-break: 'break-word'
+}
+.bdr_text5 {
+  height: 80px;
+  width: 480px;
+  font-size: 12px;
+  color: #000000;
+  border: 1px solid #4A7EBB;
+}
+.bdr_text4 {
+  height: 22px;
+  width: 170px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #000000;
+  border: 1px solid #4A7EBB;
+}
+.headergridcell_blue1 {
+    border: 1px solid #ffffff;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #3b5f88;
+}
+.cell_red1{
+    height: 22px;
+    //padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #ca1f2f;
+    text-align: center;
+}
+.bdr_text13{
+    height: 18px;
+    width: 370px !important;
+    font-size: 12px;
+    color: #000000;
+    border: 1px solid #4A7EBB;
+}
+.btn_align_centre{
+    display: flex;
+    justify-content: center;
+    
+
+}
+.div_width{
+    width: 50px;
+}
+.datagridcell_blue{
+font-size: 12px;
+    border: 1px solid #ffffff;
+    background-color: #d4e1f5;
+    &:hover {
+        background-color: #d4e1f5 !important; 
+        color: inherit; 
+      } 
+}
+.datagridcell_blue3 {
+    font-size: 12px;
+    border: 1px solid #ffffff;
+    background-color: #e4ebf5;
+    &:hover {
+        background-color: #e4ebf5 !important; 
+        color: inherit; 
+      } 
+}
+.bdr-text{
+    height:14px;
+    width:60px;
+    font-size:12px;
+    color:#000000;
+    border:1px solid #4A7EBB;
+    }
+    .top-padding{
+        padding-top: 20px;
+    }
+    .bdr_txt9 {
+        height: 14px;
+        width: 100px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        font-size: 12px;
+        color: #000000;
+        border: 1px solid #4A7EBB;
+    }
+    .text_verdhana{
+        font-family:Verdana, Arial, Helvetica, sans-serif;
+        color: #000000;
+        font-size:14px;
+        }
+    .lib-marg{
+         margin-left: 965px;
+    }
+    .lib-mur{
+        margin-right: 150px;
+    }
+    .bdr_text5 {
+        height: 80px;
+        width: 480px;
+        font-size: 12px;
+        color: #000000;
+        border: 1px solid #4A7EBB;
+    }
+    .bdr_text4 {
+        height: 22px;
+        width: 170px;
+        margin-bottom: 4px;
+        font-size: 12px;
+        color: #000000;
+        border: 1px solid #4A7EBB;
+    }
+    .lib-marg1{
+        margin-left: 720px;
+    }
+    .bdr_text15 {
+        height: 22px;
+        width: 190px;
+        font-size: 12px;
+        color: #000000;
+        border: 1px solid #4A7EBB;
+    }
+    .lib{
+        margin-left: 10px;
+    }
+    .lib-marg{
+        margin-left: 965px;
+    }
+    .lib-mur{
+        margin-right: 150px;
+    }
+    .bdr_text5 {
+        height: 80px;
+        width: 480px;
+        font-size: 12px;
+        color: #000000;
+        border: 1px solid #4A7EBB;
+    }
+    .bdr_text4 {
+        height: 22px;
+        width: 170px;
+        margin-bottom: 4px;
+        font-size: 12px;
+        color: #000000;
+        border: 1px solid #4A7EBB;
+    }
+    .up{
+        padding: 10px;
+    }
+    .up1{
+        margin: 5px;
+    }
+    .g2up{
+        margin: 5px;
+        margin-left: 270px;
+    }
+    .g2edit{
+        margin: 5px;
+        margin-left: 470px;
+    }
+    .p6red_bg_midle1{
+        background-image: url(../../../assets/images/6th_page_bg_middle.gif);
+        background-position:top left;
+        background-repeat: repeat-x;
+        width: 100%;
+    }
+        
+    .horizontal-line {
+        border: 1px;
+        width: 100%;
+        height: 1px; /* Adjust the height as needed */
+        background-color: rgb(37, 37, 37);
+    }
+        
+    //==========================<Edit Loan Modifying>================================================
+
+    $gridBorderWidth:1px;
+    $tableBorderWidth:2px;
+    $gridBorderColor:white;
+    $tableBorderColor:white;
+
+    @mixin addBorderToTable{
+        border: $gridBorderWidth solid $tableBorderColor;
+    }
+.edit-table-root{
+    @include addBorderToTable;
+
+    &-border-left{
+        border-left: $tableBorderWidth solid $tableBorderColor;
+    }
+    &-border-top{
+        border-top:$tableBorderWidth solid $tableBorderColor;
+    }
+    &-border-right{
+        border-right: $tableBorderWidth solid $tableBorderColor;
+    }
+    &-border-bottom{
+        border-bottom:$tableBorderWidth solid $tableBorderColor;
+    }
+    &-border-right-bottom{
+        border-right: $tableBorderWidth solid $tableBorderColor;
+        border-bottom: $tableBorderWidth solid $tableBorderColor !important;
+
+    }
+    &-border-right-top{
+       
+        border-right:$tableBorderWidth solid $tableBorderColor !important;
+        border-top:  $tableBorderWidth solid $tableBorderColor !important; 
+        
+      }
+      .editModifyingHeaderBold{
+        background-color: #385E8A!important;
+        font-weight: 500!important;
+        font-size: 12px!important;
+        text-align: center!important;
+        color: white!important;
+        border-bottom: 2px solid;
+      }
+
+      label{
+        padding: 2px;
+        display: inline-block; 
+        font-family:'Times New Roman';
+         
+      }
+      &-col1{
+        width: 0.5%;
+      }
+      &-col2{
+        width: 0.5%;
+      }
+      &-col3{
+        width: 0.3%;
+      }
+      &-col4{
+        width: 0.5%;
+      }
+      &-col5{
+        width: 0.8%;
+      }
+      &-col6{
+        width: 0.5%;
+      }
+    //   here width of editModify
+
+    &-col7{
+        width:0.09%;
+    }
+    &-col8{
+        width: 0.4%;
+    }
+    &-col9{
+        width: 0.4%;
+    }
+    &-col10{
+        width: 0.4%;
+    }
+    &-col11{
+        width: 0.09%;
+    }
+    &-col12{
+        width: 0.4%;
+    }
+    &-col13{
+        width: 0.4%;
+    }
+    &-col14{
+        width: 0.3%;
+    }
+    &-col15{
+        width: 0.3%;
+
+    }
+    &-col16{
+        width: 0.3%;
+    }
+    &-col17{
+        width: 0.2%;
+    }
+
+  
+
+
+      .editModifying_cell_background{
+        background-color: #D1E1FA;
+        &:hover{
+            background-color: #D1E1FA !important;
+            color: inherit;
+        }
+      }
+}
+
+.edit_modifying_error_border{
+    border: 1px solid red;
+    width: 75px;
+}
+.edit_modifying_border{
+    width: 75px;
+}
+//=========================csv-upload ===================================
+
+.csv_upload_button_center{
+    display: flex;
+    justify-content: center;
+
+}
+.csv_upload_header{
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Times New Roman';
+}
+.mrg_right{
+    margin-right: 11px;
+}
+.mrg_left{
+    margin-right: 7px;
+}
+.book-padtop{
+    padding-top: 4px;
+}
+
+.titletextcolor{
+    font-size: 16px;
+    color: orange;
+}
+
+.hoverable-content:hover {
+    white-space: normal; /* Allow content to wrap within the cell */
+    max-width: none; /* Remove the maximum width */
+    overflow: visible; /* Allow content to overflow cell boundaries */
+}
+.pagenumbercolor{
+    font-size: 16px;
+    color: blue;
+    cursor: pointer;
+}
+.pagination-button-lib {
+   padding-top: 20px;
+    background: none;
+    border: none;
+    color:black; /* Set the color you want for the numbers */
+    font-size: 16px; 
+    font-family: Verdana, Arial, Helvetica, sans-serif;/* Adjust the font size as desired */
+    cursor: pointer;
+    margin: 0 5px; /* Add some space between the numbers */
+  
+  }
