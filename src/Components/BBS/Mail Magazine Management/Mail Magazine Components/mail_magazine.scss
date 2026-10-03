@@ -1,0 +1,164 @@
+.mail_magazine_list_header{
+    justify-content: space-between;
+    display: flex;
+}
+//searchdelete and modify bbs and general styles
+.sxth_bdr_left_bottom{
+    border-bottom:1px solid  #ffff !important;
+    border-left:1px solid  #ffff !important;
+    border-right:1px solid  #ffff !important;
+    border-top:1px solid  #ffff !important;
+    background-color: #ffff !important;
+    border: none !important;
+    
+    }
+    .mail_member_sidebar_background{
+        background-color: #ffff;
+        color: white;
+        text-align: center;
+        padding-left: 20px;
+        }
+        .gridcolumn-cells {
+            border: 1px solid #ffff !important;
+            padding: 1px !important;
+         
+          }
+          .gridcolumn-cells.last-column {
+            background-color: white;
+          }
+          .custom-data-grid {
+            border: none !important; 
+          }
+          .custom-data-grid .MuiDataGrid-columnHeaders .MuiDataGrid-colCellWrapper {
+            border-bottom: none !important; /* Remove the bottom border */
+          }
+          .custom-data-grid .MuiDataGrid-row .MuiDataGrid-cell:last-child {
+            border-right: none !important;
+          }
+         
+
+.upload_mail_magazine_button_align {
+   text-align: center !important;
+
+}
+
+.upload_mail_magazine_button{
+    font-size: 12px!important;
+    background-color: #349acf!important;
+    border-radius: 36px!important;
+    border-color: #349acf!important;
+    color: white!important;
+    padding: 5px 25px!important;
+    text-align: center!important;
+    width: 150px!important;
+    height: 40px!important;
+  }
+  
+.Active_btnmailmag{
+  color: red;
+  text-decoration: none;
+  border: none;
+}
+.Inactive_btnmailmag{
+  color:#551A8B;
+  text-decoration: underline;
+  border: none;
+}
+.mbr-list-bg1{
+  background-color:#D0D8E8;
+  &:hover {
+    background-color: #D0D8E8 !important; 
+    color: inherit; 
+  } 
+ }
+ .mbr-list-bg2{
+  background-color:#E9EDF4;
+  &:hover {
+    background-color: #E9EDF4 !important; 
+    color: inherit; 
+  } 
+ }
+ .member_magazine_content{
+  margin-top: 10px;
+  // justify-content: center;
+  // text-align: center;
+  margin-bottom: 10px;
+  margin-left: 40px;
+
+}
+.textalign{
+  display: flex;
+  justify-content: flex-end;
+}
+.red_font{
+  color: red;
+}
+#message{
+  font-size: large;
+  font-weight: bolder;
+  text-align: center;
+  padding:10px;
+  color:red;
+}
+.text-underline {
+  color: blue;
+  text-decoration: underline !important;
+  cursor: pointer;
+}
+.content_center{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.content_margintop{
+margin-top: 20px;
+}
+//===============mail magazine by theme ========================/
+
+.list-mail-magazine_a{
+  padding-top: 5px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.list-mail-magazine-theme_lab{
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: blue;
+  font-size: 12px;
+}
+
+//================email reply theme============================
+
+.email_reply_theme_margin{
+  margin-left: 20%;
+}
+.email_reply_theme_margin1{
+  margin-left: 22.5%;
+}
+.email_reply_theme_button{
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  padding-left: 10px; 
+}
+.sorticonarrow{
+  display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.white_headertext{
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+  color:#FFFFFF;
+  font-size: 13px;
+  }
+  .gridmrglft{
+    margin-left: 40px !important;
+  }
+  .txt_green{
+    color: green;
+  }
