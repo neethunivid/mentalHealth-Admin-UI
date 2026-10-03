@@ -1,0 +1,231 @@
+.size {
+  width: 10px;
+  height: 30px;
+}
+//membersearch style
+.member_search_content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 40px;
+}
+
+.content-row {
+  text-align: left;
+  display: flex;
+}
+.top-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hr {
+  height: 8px;
+}
+
+.checkpad {
+  padding-left: 5px;
+}
+.reg_email_input {
+  height: 16px;
+  width: 135px;
+  font-size: 12px;
+  color: #000000;
+  border: 1px solid #4a7ebb;
+}
+
+// .bdr_text {
+//   height: 25px;
+//   width: 150px;
+//   font-size: 12px;
+//   color: #000000;
+//   border: 1px solid #4a7ebb;
+// }
+
+.bdr_text3 {
+  height: 25px;
+  width: 90%;
+  font-size: 12px;
+  color: #000000;
+  border: 1px solid #4a7ebb;
+}
+
+.bdr_text4 {
+  height: 25px;
+  width: 100%;
+  font-size: 12px;
+  color: #000000;
+  border: 1px solid #4a7ebb;
+}
+
+.member_add_thanks_text {
+  text-align: center;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.member_add_thanks_text_span {
+  text-align: center;
+  justify-content: center;
+  // margin-top: 10%;
+}
+.bg_sixt_TableCell {
+  background-color: #e1efff;
+  &:hover {
+    background-color: #e1efff !important;
+    color: inherit;
+  }
+}
+
+//member list
+ .dgridcolumn-cell {
+   border: 1px solid #729BCB !important;
+   padding: 1px !important;
+
+ }
+ .sixth_bdr_left_bottom{
+   border-bottom:1px solid  #729BCB !important;
+   border-left:1px solid  #729BCB !important;
+   border-right:1px solid  #729BCB !important;
+   border-top:1px solid  #729BCB !important;
+   
+   }
+   .bg_blue_tablecell{
+       background-color: white;
+         &:hover {
+         background-color: transparent !important;
+         color: inherit; 
+       }
+   }
+   //doawnload memberand common styles
+  .mg_top{
+   padding-top: 5px;
+  }
+
+
+.text_grid {
+  flex-direction: row;
+  display: flex;
+}
+.txtverdana {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+}
+.padding {
+  padding: 5px;
+}
+.hide-sort-icon .MuiDataGrid-sortIcon {
+  display: none;
+}
+    .mg_lftrgt{
+      padding-left: 10px;
+      padding-right: 10px;
+  
+    }
+    .blacktxt{
+      font-family:Verdana, Arial, Helvetica, sans-serif;
+      color: #000000;
+      font-size:12px;
+      }
+      .table_bordr{
+        border:1px solid  #729BCB;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        }
+        .mgtp_bt{
+          padding-top: 6px;
+          padding-bottom: 6px;
+        }
+        .tpspc{
+          height: 15px;
+            background-color: white;
+            border: none;
+        }
+        .emptygrid{
+           width: 50px;
+        }
+        .tpspc_1{
+          height: 35px;
+            background-color: white;
+            border: none;
+        }
+        .mg_lft{
+          padding-left: 60px;
+        }
+        .blacktxt_1{
+          font-family:Verdana, Arial, Helvetica, sans-serif;
+          color: #000000;
+          font-size:12px;
+          }
+          .mglft_1{
+            padding-left: 85px;
+          }
+          .mglft{
+            padding-left: 22px;
+          }
+          .mg_lftrgt1{
+            padding-left: 4px;
+            padding-right: 4px;
+        
+          }
+          .mgrgt{
+            padding-right: 22px;
+          }
+
+ ///mail member style{
+.mail_member_header_background{
+    background-color: #4F81BD;
+    color: white;
+    text-align: center;
+    padding-left: 20px;
+    border: 1px solid  #729BCB;
+    }
+
+.my-row-0 {
+  background-color: red;
+}
+
+.my-row-1 {
+  background-color: blue;
+}
+
+//mail magazine file upload
+.upload_mem_span {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+}
+
+//registration member email input
+
+.reg_email_input1 {
+  height: 16px;
+  width: 116px;
+  font-size: 12px;
+  color: #000000;
+  border: 1px solid #4a7ebb;
+}
+
+.mbr-list-blue-bg{
+ background-color:  #dce8ff;
+ &:hover {
+  background-color:  #dce8ff;
+
+}
+}
+.sort-arrow-container{
+  display: flex;
+    flex-direction: column;
+    margin-top: 17px;
+    margin-left: 10px;
+}
+.sortarrow{
+  width: 10px;
+  height: 10px;
+  cursor:pointer;
+}
+//=================cursor==================================
+
+.cursor_pointer{
+cursor: pointer;
+}
+

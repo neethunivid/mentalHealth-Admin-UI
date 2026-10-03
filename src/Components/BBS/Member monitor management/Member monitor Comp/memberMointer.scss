@@ -1,0 +1,343 @@
+.member_monitor_content{
+    margin-top: 10px;
+    // justify-content: center;
+    // text-align: center;
+    margin-bottom: 10px;
+    margin-left: 40px;
+
+}
+
+.member_monitor_content_date_seperation{
+    padding-right: 20px;
+    text-align: center;
+    margin-top: auto;
+    padding-left: 20px;
+}
+
+.member_monitor_content_date_image{
+    width:14;
+    height:14;
+    margin: 3px;
+}
+
+.member_mointer_content_button_alignment{
+    margin-top: auto;
+    display: flex;
+    margin-left: 60px;
+    // align-items:center;
+    // padding-left: 10rem;
+    // justify-content: center;
+    // justify-content: space-between;
+
+}
+
+.member_mointer_content_button{
+    margin-left: 60px!important;;
+}
+
+.member_mointer_content_red-text{
+    color: #ff0000;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.member_moniter_content_list{
+    padding-left: 30px;
+}
+
+.member_mointer_content_listData{
+    margin-top: 10px;
+    padding-left: 80px; 
+    padding-bottom: 10px;
+}
+
+.member_mointer_content_buttonlist{
+    margin-top: 100px;
+}
+
+
+// member mointer detail screen styles
+.member_moniter_detail_buttonAlignment{
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+//remarks awaiting
+.mg_top{
+    padding-top: 5px;
+   }
+   .text_grid{
+    flex-direction: row;
+    display: flex;
+   }
+   .txtverdana{
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:11px;
+    width: 87%;
+    padding-left: 5px;
+    color: black;
+    
+    }
+    .txtverdana1{
+      font-family:Verdana, Arial, Helvetica, sans-serif;
+      font-size:11px;
+      color: black;
+      
+      
+      }
+      .mg_lftrgt{
+        padding-left: 10px;
+        padding-right: 10px;
+    
+      }
+      .blacktxt{
+        font-family:Verdana, Arial, Helvetica, sans-serif;
+        color: #000000;
+        font-size:12px;
+        }
+        .table_bordr{
+          border:1px solid  #729BCB;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          }
+          .mgtp_bt{
+            padding-top: 6px;
+            padding-bottom: 6px;
+          }
+          .tpspc{
+            height: 15px;
+              background-color: white;
+              border: none;
+          }
+          .emptygrid{
+             width: 50px;
+          }
+          .tpspc_1{
+            height: 35px;
+              background-color: white;
+              border: none;
+          }
+          .mg_lft{
+            padding-left: 60px;
+          }
+          .blacktxt_1{
+            font-family:Verdana, Arial, Helvetica, sans-serif;
+            color: #000000;
+            font-size:12px;
+            }
+            .mglft_1{
+              padding-left: 85px;
+            }
+            .mglft_2{
+                padding-left: 120px;
+              }
+              .mglft_3{
+                padding-left: 150px;
+              }
+            .navtxt{
+              font-family:Verdana, Arial, Helvetica, sans-serif;
+              color: #551A8B;
+              font-size:13px;
+              }
+              .mglft{
+                padding-left: 22px;
+              }
+              .itemgrid{
+                height: 32px;
+                text-align: center;
+                justify-content: center;
+                
+              }
+              .bg_grey{
+                background-color: #E7E7E7;
+                padding: 4px;
+              }
+              
+               .bg_white{
+                 padding-left: 4px;
+               } 
+               .greytopbtm{
+                padding-top: 20px;
+                padding-bottom: 20px;
+               }
+               .greytopbtm1{
+                padding-top: 15px;
+                padding-bottom: 15px;
+               }
+               .divstyle{
+                width: 412px;
+                overflow: auto;
+                height: 250px;
+               }
+               .bgorange{
+                background-color: #FAC090;
+                padding:3px;
+               }
+               .inputstyles{
+                width: 90%;
+                
+               }
+               .mg_lftrgt1{
+                padding-left: 4px;
+                padding-right: 4px;
+            
+              }
+              .bdr_textw{
+                height:16px;
+                width:150px;
+                font-size:12px;
+                color:#000000;
+                border:1px solid #4A7EBB;
+                }
+
+///this is tree styles
+
+
+.tree {
+  width: 98%;
+  // overflow: auto;
+  font-family: Arial, sans-serif;
+  
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.tree_box{
+  // width: 98%;
+  height: 280px;
+  overflow: auto;
+  font-family: Arial, sans-serif;
+  color: red;
+}
+
+.node {
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+// .title {
+//   // font-weight: bold;
+// }
+
+.children {
+  margin-left: 20px;
+}
+
+//ngword style
+
+.ngone{
+  margin-right:310px;
+  font-size:13px;
+}
+
+.ngtwo{
+  font-size:14px;
+}
+.p2red_bg_word{
+  background-color:#385E8A;
+  background-position:top left;
+  background-repeat: repeat-x;
+  align-items: center;
+  font-size: 14px;
+  border-spacing: 1px;
+  text-align: center;
+  border: 2px solid #FFF;
+  background: #385E8A;
+  padding: 2px;
+  color: #FFF;
+  font-size: 14px;
+}
+  
+
+.p2red_bg_word1{
+  background-color:#D1E1FA;
+  background-position:top left;
+  background-repeat: repeat-x;
+  align-items: center;
+  border: 2px solid #FFF;
+  font-size: 14px;
+  border-spacing: 1px;
+
+}
+//automatic approval
+.toggle-switch-box {
+  border: 1px solid rgb(142, 177, 252);
+  padding: 35px;
+  margin-top: 10px;
+}
+
+.toggle-switch-content {
+  display: flex;
+  // align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.radio-buttons-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.radio-buttons-container input[type="radio"] {
+  margin-right: 5px;
+  
+}
+
+.radio-buttons-container label {
+  margin-right: 20px; /* adds space between radio buttons */
+}
+
+.toggle-switch-buttons{
+background-color:#349ACF;
+border-radius:36px;
+border-color:#349ACF; 
+color: white;
+padding: 5px 25px;
+justify-content: center;
+margin-top: 15px;
+margin-inline-start: 10px;
+align-items: center;
+text-align: center;
+
+}
+
+.toggle-switch-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-inline-start: 10px;
+  align-items: center;
+}
+
+.btn{
+  width:97px;
+  height:27px;
+ 
+}
+
+//automatic approval style
+
+.automatic_pl{
+ 
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 14px;
+
+  text-align: center;
+  font-weight: bold;
+
+}
+//remarks_await styles
+.remark_await_padding{
+  padding-left: 10px;
+}
+
+.remark_pen_textarea{
+  width: 99%; /* Take up the full available width */
+  height: 200px; /* Set a default height */
+  resize: vertical; 
+}

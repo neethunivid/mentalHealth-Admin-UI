@@ -1,0 +1,145 @@
+import React, { useEffect, useState } from 'react';
+import {  Grid, Button } from '@mui/material';
+import { useLocation,useNavigate } from 'react-router-dom';
+import LeftPanBBS from '../../../Common/LeftPanBBS';
+import back from '../../../../assets/images/btn_back_new.gif';
+import submit from '../../../../assets/images/btna1.gif';
+import '../../../../assets/css/health.css';
+import apiClient from "../../../../API/API-client";
+import '../../../BBS/Mail Magazine Management/Mail Magazine Components/mail_magazine.scss';
+import { useSelector, useDispatch } from "react-redux";
+import { setMemberReg } from "../../../../Redux/actions";
+
+const SendMailBBSPreview = () => {
+  let dataRequest: any;
+  const location = useLocation();
+  const [type, setType] = useState("");
+
+   //the useSelector hook to extract the memberData  from the Redux state
+  const memberData: any = useSelector((state: any) => state.memberData);
+  const formattedData = memberData?.sendmailBBS?.content?.replace(/\/n\/r/g, '\n\r');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+      /*when browser refresh or when back from preview screen
+     condition to get redux stored values get here and setValue in each fields */
+      const localStorageData1 = sessionStorage.getItem("sendmailBBS");
+      if (localStorageData1) {
+        const parsedObject: any = JSON.parse(localStorageData1);
+        dispatch(setMemberReg("sendmailBBS", parsedObject));
+        //setType(parsedObject?.type)
+        
+      }
+    
+  }, []);
+
+  //api call to save the data
+  const handleUpdateButtonClick = async () => {
+    try {
+
+      if (memberData?.sendmailBBS?.type == "PC") {
+        dataRequest = {
+          "type": 1,
+          "title": memberData?.sendmailBBS?.title,
+          "text": memberData?.sendmailBBS?.content,
+          "textMob": "",
+          "non": 0,
+          "sendstatus": 0
+        }
+      } else {
+        dataRequest = {
+          "type": 2,
+          "title": memberData?.sendmailBBS?.title,
+          "text": "",
+          "textMob": memberData?.sendmailBBS?.content,
+          "non": 0,
+          "sendstatus": 0
+        }
+      }
+      const apiData = await apiClient.post(
+        "api/mailmag/register",
+        dataRequest,
+        {}
+      );
+      if (apiData) {
+        dispatch(setMemberReg('sendmailBBS',''));
+        navigate('/sendmailtobbs', {state: {data: apiData.data.data.id,title:apiData.data.data.title}})
+      }
+
+    } catch (error: any) {
+      // Handle errors if necessary
+      console.error("API Error:", error);
+    }
+  };
+
+  //handling the back button
+  const handleBackButtonClick = () => {
+    navigate('/sendmailmagbbs', 
+    { state: { data: memberData?.sendmailBBS?.type  } })
+  }
+  return (
+    <div>
+      <Grid container xs={12} padding={1} spacing={1}>
+        <Grid item xs={3} spacing={2}>
+          <LeftPanBBS />
+        </Grid>
+        <Grid item xs={9}>
+          <Grid className="content-row">
+            <Grid className="p2red_bg_left size"></Grid>
+            <Grid className="p2red_bg_midle">
+              <Grid className="top-header">
+                <span className="verdana_big">E.メルマガ発信（BBS)</span>
+                <span className="verdana_big">メルマガ管理</span>
+              </Grid>
+            </Grid>
+            <Grid className="p2red_bg_right size"></Grid>
+          </Grid>
+          <Grid className="hr"></Grid>
+          <Grid >
+            <Grid xs={12} container className="content_margintop">
+              <Grid xs={2}></Grid>
+              <Grid xs={9}>
+                <span className="black">	★タイトル</span>
+                <Grid className="black">{memberData?.sendmailBBS?.title}</Grid>
+              </Grid>
+              <Grid xs={1} container spacing={1}>
+                <Grid item className={memberData?.sendmailBBS?.type == 'PC' ? "Active_btnmailmag" : "Inactive_btnmailmag"}
+                >
+                  PC
+                </Grid>
+                <Grid item className={memberData?.sendmailBBS?.type == 'SP' ? "Active_btnmailmag" : "Inactive_btnmailmag"}
+                >
+                  携帯
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid xs={12} container className="content_margintop">
+              <Grid xs={2}></Grid>
+              <Grid xs={6}>
+                <span className="black">{memberData?.sendmailBBS?.type == "PC" ? `★メール内容(PC)` : `★メール内容(携帯）`}</span>
+                <Grid className="black"> <span >{formattedData}</span>
+                  {/* <span className="black">{mailcontent?.text}</span> */}
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid xs={12} container className="content_margintop">
+              <Grid xs={2}></Grid>
+              <Grid xs={10}>
+                <Button type="submit" onClick={() => handleUpdateButtonClick()}>
+                  <img src={submit} />
+                </Button>
+                <Button onClick={() => handleBackButtonClick()}>
+                  <img src={back} />
+                </Button>
+                <Grid></Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+
+      </Grid>
+    </div>
+  );
+}
+
+export default SendMailBBSPreview;

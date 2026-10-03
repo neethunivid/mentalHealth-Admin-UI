@@ -1,0 +1,98 @@
+/* 別ウィンドウ表示 */
+
+function seminar1ow1(){
+var win1 = window.open("images/map-losaka.gif","map","width=400,height=286,scrollbars=0,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function seminar1_d_ow1(){
+var win2 = window.open("images/map-umeda.jpg","map","width=320,height=240,scrollbars=0,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function seminar1_e_ow1(){
+var win3 = window.open("images/map-sansokan.gif","map","width=532,height=412,scrollbars=0,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function seminar1_g_ow1(){
+var win4 = window.open("images/map-kinroukaikan.gif","map","width=348,height=280,scrollbars=0,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function seminar1_h_ow1(){
+var win5 = window.open("images/map-videoseminar.jpg","map","width=703,height=332,scrollbars=0,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function library01ow1(){
+var win6 = window.open("videolist.html","profile","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function forum1ow1(){
+var win7 = window.open("drprofile.html","profile","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function news15ow1(){
+var win8 = window.open("news15_table1.html","table1","width=334,height=115,scrollbars=0,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function news15ow2(){
+var win9 = window.open("news15_table2.html","table2","width=314,height=572,scrollbars=0,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function news15ow3(){
+var win10 = window.open("news15_table3.html","table3","width=470,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function fuan5_a17ow1(){
+var win11 = window.open("fuan5_a17a.html","explanation1","width=420,height=330,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function fuan5_a17ow2(){
+var win12 = window.open("fuan5_a17b.html","explanation2","width=420,height=330,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function kigyoseminar1(){
+var win13 = window.open("kigyoseminar.html","kigyoseminar","width=660,height=400,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function forum2ow1a(){
+var win14 = window.open("forum2_a1.html","forum_sample1","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function forum2ow2a(){
+var win15 = window.open("forum2_a2.html","advice_sample1","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function forum2ow1b(){
+var win16 = window.open("forum2_b1.html","forum_sample2","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function forum2ow2b(){
+var win17 = window.open("forum2_b2.html","advice_sample2","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function forum2ow1c(){
+var win18 = window.open("forum2_c1.html","forum_sample3","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function forum2ow2c(){
+var win19 = window.open("forum2_c2.html","advice_sample3","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function forum2ow1d(){
+var win20 = window.open("forum2_d1.html","forum_sample4","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function forum2ow2d(){
+var win21 = window.open("forum2_d2.html","advice_sample4","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=1");
+}
+function vseminar1ow1(){
+var win22 = window.open("vattention.html","vattention","width=660,height=500,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function muryosodan1(){
+var win23 = window.open("muryosodan1.html","muryosodan","width=660,height=400,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function muryosodan2(){
+var win24 = window.open("muryosodan2.html","muryosodan","width=660,height=400,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function muryosodan3(){
+var win25 = window.open("muryosodan3.html","muryosodan","width=660,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function kenkyuow1(){
+var win26 = window.open("attention.html","attention","width=660,height=500,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function moritaow1(){
+var win27 = window.open("moritaAudio-v2.html","moritaAudio-v2","width=500,height=600,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function zaidanow1(){
+var win28 = window.open("uchiwake_25.html","uchiwake_25","width=1100,height=1800,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function zaidanow2(){
+var win29 = window.open("uchiwake2_27.html","uchiwake2_27","width=1100,height=1800,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function zaidanow3(){
+var win30 = window.open("uchiwake_26.html","uchiwake_26","width=1100,height=1800,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function zaidanow4(){
+var win31 = window.open("uchiwake2_28.html","uchiwake_28","width=1100,height=1800,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
+function zaidanow5(){
+var win32 = window.open("uchiwake_27.html","uchiwake_27","width=1100,height=1800,scrollbars=1,resizable=0,toolbar=0,menubar=0,location=0,directories=0,status=0");
+}
