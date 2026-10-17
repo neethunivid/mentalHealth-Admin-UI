@@ -58,57 +58,56 @@ const UserWithdrawn = () => {
             return;
         }
         else if (!/^\d{4}\.\d{2}\.\d{2}$/.test(joindate)) { // Check if the date is in yyyy.mm.dd format
-            alert("The join_date must be in the format yyyy.mm.dd");
-            setError("join_date", {
-                type: "format",
-                message: "Date must be in yyyy.mm.dd format",
-            });
-            return;
-        }
+    alert("The join_date must be in the format yyyy.mm.dd");
+    setError("join_date", {
+        type: "format",
+        message: "Date must be in yyyy.mm.dd format",
+    });
+    return;
+}
 
-        else if (!ischeckadd1Checked && data.addition1) {
+        else if (!data.ischeckadd1Checked && data.addition1) {
             alert("新しい1を選択");
             setError("addition1", {
                 type: "required",
             });
             return;
         }
-        else if (!ischeckadd2Checked && data.addition2) {
+        else if (!data.ischeckadd2Checked && data.addition2) {
             alert("新しい2を選択");
             setError("addition2", {
                 type: "required",
             });
             return;
-        }
+        } 
         else if (!normalChecked && !anxietyChecked &&
             !blackmailChecked && !otherChecked &&
             !growingupChecked && !ischeckadd1Checked && !ischeckadd2Checked) {
             alert("部屋を選んでください。");
             return;
         }
-        else if (ischeckadd1Checked == true && data.addition1 == "") {
+        else if (data.ischeckadd1Checked == true && data.addition1 == "") {
             alert("新規1の部屋に入ってください。");
             setError("addition1", {
                 type: "required",
             });
             return;
         }
-        else if (ischeckadd2Checked == true && data.addition2 == "") {
+        else if (data.ischeckadd2Checked == true && data.addition2 == "") {
             alert("新規2の部屋に入ってください。");
             setError("addition2", {
                 type: "required",
             });
             return;
-        }
-
+        } 
+        
         else {
             if (data.submitButton === 'submitButton') {
-                updateUserUnderreview(data)
-            }
-            else if (data.submitButton === 'onHoldButton') {
+            updateUserUnderreview(data)}
+            else if(data.submitButton === 'onHoldButton'){
                 onHoldUser()
             }
-            else {
+            else{
                 DeleteUser()
             }
         }
@@ -122,8 +121,8 @@ const UserWithdrawn = () => {
     const [growingupChecked, setGrowingupChecked] = useState(false);
     const [ischeckadd1Checked, setadd1Checked] = useState(false);
     const [ischeckadd2Checked, setadd2Checked] = useState(false);
-    const [isMailMagazineSubsribe, setMailMagazineSubscribe] = useState(false)
-    const [isMailMagazineCancel, setMailMagazineCancel] = useState(false)
+    const [isMailMagazineSubsribe,setMailMagazineSubscribe]=useState(false)
+    const [isMailMagazineCancel,setMailMagazineCancel]=useState(false)
     const [isLoading, setIsLoading] = useState(false);
     const [emailpcuser, setEmailpcuser] = useState();
     const [emailpcdomain, setEmailpcDomain] = useState();
@@ -139,8 +138,8 @@ const UserWithdrawn = () => {
     const [joindate, setJoindate] = useState("");
     const [zipcode1, setZipCode1] = useState();
     const [zipcode2, setZipCode2] = useState();
-    const [isgendermale, setGenderMale] = useState(false)
-    const [isgenderfemale, setGenderFemale] = useState(false)
+    const [isgendermale,setGenderMale]=useState(false)
+    const [isgenderfemale,setGenderFemale]=useState(false)
     const [job, setJob] = useState();
     const [pref, setPref] = useState();
     const dispatch = useDispatch();
@@ -160,7 +159,7 @@ const UserWithdrawn = () => {
                 );
                 return [...prevListData, ...newData];
             });
-
+    
             initializevalues(data);
         }
     }, [data]);
@@ -176,8 +175,8 @@ const UserWithdrawn = () => {
         try {
             req = {
                 status: 0,
-                withdrawList: false,
-                pageNumber: pageNumber
+                withdrawList:false,
+                pageNumber : pageNumber
             };
             dispatch(fetchData("user_underreview", "api/members/memberlistsearch", req));
             setLoaded(true)
@@ -193,8 +192,8 @@ const UserWithdrawn = () => {
         }
     };
     const initializevalues = (data: any) => {
-        if (data?.data?.length > 0) {
-            fetchMemberById(data?.data[0]?.id);
+        if(data?.data?.length>0){
+        fetchMemberById(data?.data[0]?.id);
         }
 
     };
@@ -271,14 +270,14 @@ const UserWithdrawn = () => {
                 growingup: growingupChecked == false ? 0 : 1,
                 addition1: itemData?.remarks[0]?.addition1,
                 addition2: itemData?.remarks[0]?.addition2,
-
+                
             };
             const apiData = await ApiClient.put("api/members/admin/updatemember", dataRequest, {});
-            if (apiData) {
+            if(apiData){
                 setSubmitButtonDisabled(false)
-                navigate('/updateresponsepage', { state: { data: " A.入会待ち（審査中）のユーザー", action: "update" } });
+                navigate ('/updateresponsepage',{state:{data:" A.入会待ち（審査中）のユーザー",action:"update"}});
             }
-
+          
         } catch (error: any) {
             setSubmitButtonDisabled(false)
             if (error.response && error.response.status === 400) {
@@ -298,76 +297,76 @@ const UserWithdrawn = () => {
         const Data = getValues()
         const confirmed = window.confirm('削除してもよろしいですか？');
         if (confirmed) {
-            try {
-                const dataRequest: any = {
-                    id: itemData?.member?.id,
-                    memberno: itemData?.member?.memberno,
-                    name: itemData?.member?.name,
-                    namek: itemData?.member?.namek,
-                    name2: itemData?.member?.name2,
-                    namek2: itemData?.member?.namek2,
-                    memberid: itemData?.member?.memberid,
-                    password: itemData?.member?.password,
-                    sex: itemData?.member?.sex,
-                    dob: getdob(),
-                    job: itemData?.member?.job,
-                    job_additional: itemData?.member?.job_additional,
-                    zipcode: itemData?.member?.zipcode,
-                    pref: itemData?.member?.pref,
-                    address1: itemData?.member?.address1,
-                    address2: itemData?.member?.address2,
-                    address3: itemData?.member?.address3,
-                    tel: gettel1() + "-" + gettel2() + "-" + gettel3(),
-                    mob: itemData.member.mob ?? "",
-                    workplace: itemData?.member?.workplace,
-                    howfound: itemData?.member?.howfound,
-                    email_pc: itemData?.member?.email_pc,
-                    email_mob: itemData?.member?.email_mob,
-                    mailmagazine: itemData?.member?.mailmagazine,
-                    remarks_initial: itemData?.member?.remarks_initial,
-                    joinDate: moment(joindate, ['YYYY.M.D', 'YYYY.MM.DD']).format('YYYY-MM-DD'),
-                    changeDate: itemData && itemData.member && itemData.member.changeDate !== null ? getChangedate() : "",
-                    changeCause: itemData?.member?.changeCause,
-                    status: 5,
-                    ngMember: 0,
-                    deleteRequest: 0,
-                    date: new Date().toISOString().split('T')[0],
-                    email_smart: itemData?.member?.email_pc ? itemData?.member?.email_pc :
-                        itemData?.member?.email_mob ? itemData?.member?.email_mob : "",
-                    statement_title: itemData?.remarks[0]?.title ?? "",
-                    statement_text: itemData?.remarks[0]?.text ?? "",
-                    isChk_add1: ischeckadd1Checked == false ? 0 : 1,
-                    isChk_add2: ischeckadd2Checked == false ? 0 : 1,
-                    normal: normalChecked == false ? 0 : 1,
-                    anxiety: anxietyChecked == false ? 0 : 1,
-                    blackmail: blackmailChecked == false ? 0 : 1,
-                    other: otherChecked == false ? 0 : 1,
-                    growingup: growingupChecked == false ? 0 : 1,
-                    addition1: itemData?.remarks[0]?.addition1,
-                    addition2: itemData?.remarks[0]?.addition2,
+        try {
+            const dataRequest: any = {
+                id: itemData?.member?.id,
+                memberno: itemData?.member?.memberno,
+                name: itemData?.member?.name,
+                namek: itemData?.member?.namek,
+                name2: itemData?.member?.name2,
+                namek2: itemData?.member?.namek2,
+                memberid: itemData?.member?.memberid,
+                password: itemData?.member?.password,
+                sex: itemData?.member?.sex,
+                dob: getdob(),
+                job: itemData?.member?.job,
+                job_additional: itemData?.member?.job_additional,
+                zipcode: itemData?.member?.zipcode,
+                pref: itemData?.member?.pref,
+                address1: itemData?.member?.address1,
+                address2: itemData?.member?.address2,
+                address3: itemData?.member?.address3,
+                tel: gettel1() + "-" + gettel2() + "-" + gettel3(),
+                mob: itemData.member.mob ?? "",
+                workplace: itemData?.member?.workplace,
+                howfound: itemData?.member?.howfound,
+                email_pc: itemData?.member?.email_pc,
+                email_mob: itemData?.member?.email_mob,
+                mailmagazine: itemData?.member?.mailmagazine,
+                remarks_initial: itemData?.member?.remarks_initial,
+                joinDate: moment(joindate, ['YYYY.M.D', 'YYYY.MM.DD']).format('YYYY-MM-DD'),
+                changeDate: itemData && itemData.member && itemData.member.changeDate !== null ? getChangedate() : "",
+                changeCause: itemData?.member?.changeCause,
+                status: 5,
+                ngMember: 0,
+                deleteRequest: 0,
+                date: new Date().toISOString().split('T')[0],
+                email_smart: itemData?.member?.email_pc ? itemData?.member?.email_pc :
+                    itemData?.member?.email_mob ? itemData?.member?.email_mob : "",
+                statement_title: itemData?.remarks[0]?.title ?? "",
+                statement_text: itemData?.remarks[0]?.text ?? "",
+                isChk_add1: ischeckadd1Checked == false ? 0 : 1,
+                isChk_add2: ischeckadd2Checked == false ? 0 : 1,
+                normal: normalChecked == false ? 0 : 1,
+                anxiety: anxietyChecked == false ? 0 : 1,
+                blackmail: blackmailChecked == false ? 0 : 1,
+                other: otherChecked == false ? 0 : 1,
+                growingup: growingupChecked == false ? 0 : 1,
+                addition1: itemData?.remarks[0]?.addition1,
+                addition2: itemData?.remarks[0]?.addition2,
 
-                };
-                const apiData = await ApiClient.put(
-                    "api/members/admin/updatemember",
-                    dataRequest,
-                    {}
-                );
-                if (apiData) {
-                    setDeleteButtonDisabled(false)
-                    navigate('/updateresponsepage', { state: { data: " A.入会待ち（審査中）のユーザー", action: "delete" } })
-                }
-            } catch (error: any) {
+            };
+            const apiData = await ApiClient.put(
+                "api/members/admin/updatemember",
+                dataRequest,
+                {}
+            );
+            if(apiData){
                 setDeleteButtonDisabled(false)
-                if (error.response && error.response.status === 400) {
-                    alert(error.response.data.error);
-                    console.log(
-                        error.response.data
-                    );
-                } else {
-                    console.log("Error:", error);
-                }
+                navigate ('/updateresponsepage',{state:{data:" A.入会待ち（審査中）のユーザー",action:"delete"}})
+            }       
+        } catch (error: any) {
+            setDeleteButtonDisabled(false)
+            if (error.response && error.response.status === 400) {
+                alert(error.response.data.error);
+                console.log(
+                    error.response.data
+                );
+            } else {
+                console.log("Error:", error);
             }
         }
+    }
 
     }
 
@@ -429,9 +428,9 @@ const UserWithdrawn = () => {
                 dataRequest,
                 {}
             );
-            if (apiData) {
+            if(apiData){
                 setonHoldButtonDisabled(false)
-                navigate('/updateresponsepage', { state: { data: " A.入会待ち（審査中）のユーザー", action: "update" } })
+                navigate ('/updateresponsepage',{state:{data:" A.入会待ち（審査中）のユーザー",action:"update"}})
             }
         } catch (error: any) {
             setonHoldButtonDisabled(false)
@@ -447,29 +446,29 @@ const UserWithdrawn = () => {
 
     }
     const getJoinDate = () => {
-        if (itemData?.member?.joinDate) {
+        if(itemData?.member?.joinDate){
             const FormatDate = formatDateArray(itemData?.member?.joinDate)
             return (FormatDate)
-        }
+            }
     }
     const getdate = () => {
-        if (itemData?.member?.date) {
-            const FormatDate = formatDateArray(itemData?.member?.date)
-            return (FormatDate)
+        if(itemData?.member?.date){
+        const FormatDate = formatDateArray(itemData?.member?.date)
+        return (FormatDate)
         }
     }
     const getChangedate = () => {
-        if (itemData?.member?.changeDate) {
+        if(itemData?.member?.changeDate){
             const FormatDate = formatDateArray(itemData?.member?.changeDate)
             return (FormatDate)
-        }
+            }
     }
 
     const getdob = () => {
-        if (itemData?.member?.dob) {
+          if(itemData?.member?.dob){
             const FormatDate = formatDateArray(itemData?.member?.dob)
             return (FormatDate)
-        }
+            }
     }
     const gettel1 = () => {
         const tel = itemData?.member?.tel?.split('-');
@@ -487,7 +486,7 @@ const UserWithdrawn = () => {
     //get member details on clicking the page number 
     const handleClick = (pageNo: any) => {
         setCurrentPage(pageNo);
-        setDataIndex(pageNo - 1)
+        setDataIndex(pageNo-1)
         const id = listData[pageNo - 1]?.id;
         const item = data?.data.find((item: any) => item.memberno === pageNo);
         if (id) {
@@ -520,34 +519,35 @@ const UserWithdrawn = () => {
 
     //initailize the values
     const initializeDataValues = (data: any) => {
-        if (data?.member?.email_pc) {
-            const splitEmail = data?.member?.email_pc?.split("@");
-            setEmailpcuser(splitEmail[0]);
-            setEmailpcDomain(splitEmail[1]);
+        if(data?.member?.email_pc)
+        {
+        const splitEmail = data?.member?.email_pc?.split("@");
+        setEmailpcuser(splitEmail[0]);
+        setEmailpcDomain(splitEmail[1]);
         }
-        if (data?.member?.email_mob) {
-            const splitmobEmail = data?.member?.email_mob?.split("@");
-            setEmailmobuser(splitmobEmail[0]);
-            setEmailmobDomain(splitmobEmail[1]);
+        if(data?.member?.email_mob){   
+        const splitmobEmail = data?.member?.email_mob?.split("@");
+        setEmailmobuser(splitmobEmail[0]);
+        setEmailmobDomain(splitmobEmail[1]);
         }
-        if (data?.member?.tel) {
-            const tel = data?.member?.tel?.split("-");
-            setTel1(tel[0]);
-            setTel2(tel[1]);
-            setTel3(tel[2]);
+        if(data?.member?.tel){
+        const tel = data?.member?.tel?.split("-");
+        setTel1(tel[0]);
+        setTel2(tel[1]);
+        setTel3(tel[2]);
         }
-        if (data?.member?.zipcode) {
-            const zipcodeval = data?.member?.zipcode?.split("-");
-            setZipCode1(zipcodeval[0]);
-            setZipCode2(zipcodeval[1]);
+        if(data?.member?.zipcode){
+        const zipcodeval = data?.member?.zipcode?.split("-");
+        setZipCode1(zipcodeval[0]);
+        setZipCode2(zipcodeval[1]);
         }
-        if (data?.member?.joinDate) {
-            const year = data?.member?.joinDate[0];
-            const month = String(data?.member?.joinDate[1])?.padStart(2, "0");
-            const day = String(data?.member?.joinDate[2])?.padStart(2, "0");
-            let formattedDate = `${year}.${month}.${day}`;
-            setJoindate(formattedDate);
-        } else {
+        if(data?.member?.joinDate){
+        const year = data?.member?.joinDate[0];
+        const month = String(data?.member?.joinDate[1])?.padStart(2, "0");
+        const day = String(data?.member?.joinDate[2])?.padStart(2, "0");
+        let formattedDate = `${year}.${month}.${day}`;
+        setJoindate(formattedDate);
+        }else {
             const now = new Date();
             const currentYear = now.getFullYear();
             const currentMonth = String(now.getMonth() + 1).padStart(2, "0"); // Months are 0-based
@@ -555,10 +555,10 @@ const UserWithdrawn = () => {
             const currentFormattedDate = `${currentYear}.${currentMonth}.${currentDay}`;
             setJoindate(currentFormattedDate);
         }
-        if (data?.member?.dob) {
-            setdobyear(data?.member?.dob[0]);
-            setdobmonth(String(data?.member?.dob[1])?.padStart(2, "0"));
-            setdobday(String(data?.member?.dob[2])?.padStart(2, "0"));
+        if(data?.member?.dob){
+        setdobyear(data?.member?.dob[0]);
+        setdobmonth(String(data?.member?.dob[1])?.padStart(2, "0"));
+        setdobday(String(data?.member?.dob[2])?.padStart(2, "0"));
         }
         setRemarkInitial(data?.member?.remarks_initial);
         setNormalChecked(data?.remarks[0]?.normal == 1 ? true : false);
@@ -566,18 +566,18 @@ const UserWithdrawn = () => {
         setOtherChecked(data?.remarks[0]?.other == 1 ? true : false);
         setAnxietyChecked(data?.remarks[0]?.anxiety == 1 ? true : false);
         setGrowingupChecked(data?.remarks[0]?.growingup == 1 ? true : false);
-        setadd1Checked(data?.remarks[0]?.addition1 != "" && data?.remarks[0]?.addition1 != null ? true : false);
-        setadd2Checked(data?.remarks[0]?.addition2 != "" && data?.remarks[0]?.addition2 != null ? true : false);
+        setadd1Checked(data?.remarks[0]?.addition1 != "" &&data?.remarks[0]?.addition1 !=null? true : false);
+        setadd2Checked(data?.remarks[0]?.addition2 != "" &&data?.remarks[0]?.addition2 !=null? true : false);
         getoccupation(data?.member?.job);
         getprefecture(data?.member?.pref);
-        setGenderMale(data?.member?.sex === 1 ? true : false)
-        setGenderFemale(data?.member?.sex === 2 ? true : false)
-        setMailMagazineSubscribe(data?.member?.mailmagazine === 1 ? true : false)
-        setMailMagazineCancel(data?.member?.mailmagazine === 2 ? true : false)
-
+        setGenderMale(data?.member?.sex===1?true:false)
+        setGenderFemale(data?.member?.sex===2?true:false)
+        setMailMagazineSubscribe(data?.member?.mailmagazine===1?true:false)
+        setMailMagazineCancel(data?.member?.mailmagazine===2?true:false)
+        
     };
 
-    //render the navigation page buttons to disaply the member details on page number clcik
+     //render the navigation page buttons to disaply the member details on page number clcik
     const renderPageButtons = () => {
         const pageNumbers = [];
         const pageCount = 4; // Number of page numbers to display at a time
@@ -625,13 +625,13 @@ const UserWithdrawn = () => {
 
     //navigate to next member details
     const nextPage = () => {
-        let maxPageNo = Math.floor(data.count / 10)
-        if (currentPage % 10 == 0 && maxPageNo > pageNumber) {
-            fetchUserUnderreview(pageNumber + 1)
-            setpageNumber(pageNumber + 1)
+        let maxPageNo = Math.floor(data.count/10)
+        if (currentPage % 10==0 && maxPageNo > pageNumber){ 
+            fetchUserUnderreview(pageNumber+1)
+            setpageNumber(pageNumber+1)
         }
 
-        if (currentPage < data?.count) {
+        if (currentPage < data?.count ) {
             setCurrentPage((prevPage) => prevPage + 1);
             setDataIndex(currentPage)
         }
@@ -663,7 +663,7 @@ const UserWithdrawn = () => {
                     <Grid>
                         {listData?.length > 0 ?
                             <>
-                                {itemData && itemData?.member?.id && itemData?.remarks[0] ? (
+                                {itemData && itemData?.member?.id && itemData?.remarks[0]? (
                                     <Grid>
                                         <Grid container xs={12} flexDirection={"row"}>
                                             <Grid item xs={9}></Grid>
@@ -769,7 +769,7 @@ const UserWithdrawn = () => {
                                                             <span className="black">・性別</span>
                                                         </Grid>
                                                         <Grid item xs={6}>
-
+                                                           
                                                             <Grid container flexDirection={"row"}>
                                                                 <input
                                                                     type="radio"
@@ -778,7 +778,7 @@ const UserWithdrawn = () => {
                                                                     checked={isgendermale}
                                                                     onClick={(evt: any) => {
                                                                         setGenderMale(evt.target.checked ? true : false)
-
+    
                                                                     }}
                                                                 />
                                                                 <span className="black">男性 </span>
@@ -786,10 +786,10 @@ const UserWithdrawn = () => {
                                                                     type="radio"
                                                                     value={2}
                                                                     {...register("sex")}
-                                                                    checked={isgenderfemale}
-                                                                    onClick={(evt: any) => {
+                                                                   checked={isgenderfemale}
+                                                                        onClick={(evt: any) => {
                                                                         setGenderFemale(evt.target.checked ? true : false)
-
+    
                                                                     }}
                                                                 />
                                                                 <span className="black">女性 </span>
@@ -964,7 +964,7 @@ const UserWithdrawn = () => {
                                                         </Grid>
                                                         <Grid item xs={6}>
                                                             <Grid container flexDirection={"row"}>
-
+                                                             
                                                                 <input
                                                                     type="radio"
                                                                     value={1}
@@ -972,7 +972,7 @@ const UserWithdrawn = () => {
                                                                     checked={isMailMagazineSubsribe}
                                                                     onClick={(evt: any) => {
                                                                         setMailMagazineSubscribe(evt.target.checked ? true : false)
-
+    
                                                                     }}
                                                                 />
                                                                 <span className="black">購読 </span>
@@ -983,7 +983,7 @@ const UserWithdrawn = () => {
                                                                     checked={isMailMagazineCancel}
                                                                     onClick={(evt: any) => {
                                                                         setMailMagazineCancel(evt.target.checked ? true : false)
-
+    
                                                                     }}
                                                                 />
                                                                 <span className="black">中止 </span>
@@ -1002,7 +1002,7 @@ const UserWithdrawn = () => {
                                                             id="statement_title"
                                                             className="bdr_text2"
                                                             {...register("statement_title")}
-                                                            value={itemData && itemData?.remarks ? itemData?.remarks[0]?.title : ""}
+                                                            value={itemData && itemData?.remarks ? itemData?.remarks[0]?.title:""}
                                                             onChange={(e) =>
                                                                 setItemData((prevData: any) => ({
                                                                     ...prevData,
@@ -1020,7 +1020,7 @@ const UserWithdrawn = () => {
                                                             cols={40}
                                                             className="text_area"
                                                             {...register("statement_text")}
-                                                            value={itemData && itemData?.remarks ? itemData?.remarks[0]?.text : ""}
+                                                            value={itemData && itemData?.remarks ? itemData?.remarks[0]?.text:""}
                                                             onChange={(e) =>
                                                                 setItemData((prevData: any) => ({
                                                                     ...prevData,
@@ -1040,41 +1040,41 @@ const UserWithdrawn = () => {
 
                                                     <Grid container item xs={12}>
                                                         <Grid item xs={7} flexDirection={"row"}>
-                                                            <input
-                                                                type="checkbox"
-                                                                {...register("normal")}
-                                                                checked={normalChecked}
-                                                                onClick={() => {
-                                                                    setNormalChecked(true);
-                                                                    setAnxietyChecked(false);
-                                                                    setBlackMailChecked(false);
-                                                                    setOtherChecked(false);
-                                                                    setGrowingupChecked(false);
-                                                                    setadd1Checked(false);
-                                                                    setadd2Checked(false);
-                                                                }}
-                                                            />
+                                                        <input
+                                                            type="checkbox"
+                                                            {...register("normal")}
+                                                            checked={normalChecked}
+                                                            onClick={() => {
+                                                                setNormalChecked(true);
+                                                                setAnxietyChecked(false);
+                                                                setBlackMailChecked(false);
+                                                                setOtherChecked(false);
+                                                                setGrowingupChecked(false);
+                                                                setadd1Checked(false);
+                                                                setadd2Checked(false);
+                                                            }}
+                                                        />
 
                                                             <label className="verdana">
                                                                 A.普通神経症
                                                             </label>
                                                         </Grid>
                                                         <Grid item xs={5}>
-                                                            <input
-                                                                type="checkbox"
-                                                                {...register("other")}
-                                                                checked={otherChecked}
-                                                                id="other"
-                                                                onClick={() => {
-                                                                    setNormalChecked(false);
-                                                                    setAnxietyChecked(false);
-                                                                    setBlackMailChecked(false);
-                                                                    setOtherChecked(true);
-                                                                    setGrowingupChecked(false);
-                                                                    setadd1Checked(false);
-                                                                    setadd2Checked(false);
-                                                                }}
-                                                            />
+                                                        <input
+                                                            type="checkbox"
+                                                            {...register("other")}
+                                                            checked={otherChecked}                                                           
+                                                            id="other"
+                                                            onClick={() => {
+                                                                setNormalChecked(false);
+                                                                setAnxietyChecked(false);
+                                                                setBlackMailChecked(false);
+                                                                setOtherChecked(true);
+                                                                setGrowingupChecked(false);
+                                                                setadd1Checked(false);
+                                                                setadd2Checked(false);
+                                                            }}
+                                                        />
                                                             <label className="verdana">
                                                                 D.その他
                                                             </label>
@@ -1082,40 +1082,40 @@ const UserWithdrawn = () => {
                                                     </Grid>
                                                     <Grid container item xs={12}>
                                                         <Grid item xs={7} flexDirection={"row"}>
-                                                            <input
-                                                                type="checkbox"
-                                                                {...register("anxiety")}
-                                                                checked={anxietyChecked}
-                                                                onClick={() => {
-                                                                    setNormalChecked(false);
-                                                                    setAnxietyChecked(true);
-                                                                    setBlackMailChecked(false);
-                                                                    setOtherChecked(false);
-                                                                    setGrowingupChecked(false);
-                                                                    setadd1Checked(false);
-                                                                    setadd2Checked(false);
-                                                                }}
-                                                            />
+                                                        <input
+                                                            type="checkbox"
+                                                            {...register("anxiety")}
+                                                            checked={anxietyChecked}
+                                                            onClick={() => {
+                                                                setNormalChecked(false);
+                                                                setAnxietyChecked(true);
+                                                                setBlackMailChecked(false);
+                                                                setOtherChecked(false);
+                                                                setGrowingupChecked(false);
+                                                                setadd1Checked(false);
+                                                                setadd2Checked(false);
+                                                            }}
+                                                        />
                                                             <label className="verdana">
                                                                 B.不安神経症
                                                             </label>
                                                         </Grid>
                                                         <Grid item xs={5}>
-                                                            <input
-                                                                type="checkbox"
-                                                                {...register("growingup")}
-                                                                checked={growingupChecked}
-                                                                id="growingup"
-                                                                onClick={() => {
-                                                                    setNormalChecked(false);
-                                                                    setAnxietyChecked(false);
-                                                                    setBlackMailChecked(false);
-                                                                    setOtherChecked(false);
-                                                                    setGrowingupChecked(true);
-                                                                    setadd1Checked(false);
-                                                                    setadd2Checked(false);
-                                                                }}
-                                                            />
+                                                        <input
+                                                            type="checkbox"
+                                                            {...register("growingup")}
+                                                            checked={growingupChecked}                                                            
+                                                            id="growingup"
+                                                            onClick={() => {
+                                                                setNormalChecked(false);
+                                                                setAnxietyChecked(false);
+                                                                setBlackMailChecked(false);
+                                                                setOtherChecked(false);
+                                                                setGrowingupChecked(true);
+                                                                setadd1Checked(false);
+                                                                setadd2Checked(false);
+                                                            }}
+                                                        />
 
                                                             <label className="verdana">
                                                                 E.成長の部屋
@@ -1126,42 +1126,42 @@ const UserWithdrawn = () => {
 
                                                         <Grid item xs={7} flexDirection={"row"}>
                                                             <input
-                                                                type="checkbox"
-                                                                {...register("blackmail")}
-                                                                checked={blackmailChecked}
-                                                                id="blackmail"
-                                                                onClick={() => {
-                                                                    setNormalChecked(false);
-                                                                    setAnxietyChecked(false);
-                                                                    setBlackMailChecked(true);
-                                                                    setOtherChecked(false);
-                                                                    setGrowingupChecked(false);
-                                                                    setadd1Checked(false);
-                                                                    setadd2Checked(false);
-                                                                }}
-                                                            />
+                                                               type="checkbox"
+                                                               {...register("blackmail")}
+                                                               checked={blackmailChecked}                                                           
+                                                               id="blackmail"
+                                                               onClick={() => {
+                                                                setNormalChecked(false);
+                                                                setAnxietyChecked(false);
+                                                                setBlackMailChecked(true);
+                                                                setOtherChecked(false);
+                                                                setGrowingupChecked(false);
+                                                                setadd1Checked(false);
+                                                                setadd2Checked(false);
+                                                            }}
+                                                           />
                                                             <span className="verdana">
                                                                 C.強迫神経症
                                                             </span>
                                                         </Grid>
 
                                                         <Grid item xs={5}>
-                                                            <input
-                                                                type="checkbox"
-                                                                {...register("isChk_add1")}
-                                                                checked={ischeckadd1Checked}
-                                                                id="isChk_add1"
-                                                                onClick={() => {
-                                                                    setNormalChecked(false);
-                                                                    setAnxietyChecked(false);
-                                                                    setBlackMailChecked(false);
-                                                                    setOtherChecked(false);
-                                                                    setGrowingupChecked(false);
-                                                                    setadd1Checked(true);
-                                                                    setadd2Checked(false);
-                                                                }}
-                                                            />
-                                                            <label className="verdana">F.日記</label>
+                                                        <input
+                                                            type="checkbox"
+                                                            {...register("isChk_add1")}
+                                                            checked={ischeckadd1Checked}
+                                                            id="isChk_add1"
+                                                            onClick={() => {
+                                                                setNormalChecked(false);
+                                                                setAnxietyChecked(false);
+                                                                setBlackMailChecked(false);
+                                                                setOtherChecked(false);
+                                                                setGrowingupChecked(false);
+                                                                setadd1Checked(true);
+                                                                setadd2Checked(false);
+                                                            }}
+                                                        />
+                                                            <label className="verdana"> F.新規1</label>
                                                             <input
                                                                 type="text"
                                                                 className="bdr_text_small"
@@ -1178,21 +1178,21 @@ const UserWithdrawn = () => {
                                                     </Grid>
                                                     <Grid container item xs={12}>
                                                         <Grid item xs={7} flexDirection={"row"}>
-                                                            <input
-                                                                type="checkbox"
-                                                                {...register("isChk_add2")}
-                                                                checked={ischeckadd2Checked}
-                                                                id="isChk_add2"
-                                                                onClick={() => {
-                                                                    setNormalChecked(false);
-                                                                    setAnxietyChecked(false);
-                                                                    setBlackMailChecked(false);
-                                                                    setOtherChecked(false);
-                                                                    setGrowingupChecked(false);
-                                                                    setadd1Checked(false);
-                                                                    setadd2Checked(true);
-                                                                }}
-                                                            />
+                                                        <input
+                                                            type="checkbox"
+                                                            {...register("isChk_add2")}
+                                                            checked={ischeckadd2Checked}
+                                                            id="isChk_add2"
+                                                            onClick={() => {
+                                                                setNormalChecked(false);
+                                                                setAnxietyChecked(false);
+                                                                setBlackMailChecked(false);
+                                                                setOtherChecked(false);
+                                                                setGrowingupChecked(false);
+                                                                setadd1Checked(false);
+                                                                setadd2Checked(true);
+                                                            }}
+                                                        />
 
 
                                                             <label className="verdana"> G.新規２</label>
@@ -1217,7 +1217,7 @@ const UserWithdrawn = () => {
                                                         </Grid>
                                                         <Grid item xs={8}>
                                                             <input type="text" className=" bdr_text_medium" value={joindate}
-                                                                {...register("join_date")}
+                                                                 {...register("join_date")}
                                                                 onChange={(e) => setJoindate(e.target.value)}
                                                             />
                                                             <span className="black">（例：2024.09.25）</span>
@@ -1234,33 +1234,33 @@ const UserWithdrawn = () => {
                                                 justifyContent={"center"}
                                             >
                                                 <Controller
-                                                    name="submitButton"
-                                                    control={control}
-                                                    defaultValue=""
-                                                    render={({ field }) => (
-                                                        <>
-                                                            <Button type="submit" name="submitButton" value="submitButton1"
-                                                                disabled={isSubmitButtonDisabled}>
-                                                                <img className="padding_top" src={submitbtn}
-                                                                    onClick={() => setValue('submitButton', 'submitButton')}
-                                                                    {...field} />
-                                                            </Button>
-
-                                                            <Button type="submit" name="submitButton" value="submitButton2"
-                                                                disabled={isonHoldButtonDisabled} >
-                                                                <img className="padding_top" src={onhold}
-                                                                    onClick={() => setValue('submitButton', 'onHoldButton')}
-                                                                    {...field} />
-                                                            </Button>
-                                                            <Button type="submit" name="submitButton" value="submitButton3"
-                                                                disabled={isDeleteButtonDisabled} >
-                                                                <img className="padding_top" src={deletebtn}
-                                                                    onClick={() => setValue('submitButton', 'deleteButton')}
-                                                                    {...field} />
-                                                            </Button>
-                                                        </>
-                                                    )}
-                                                />
+                                                name="submitButton"
+                                                control={control}
+                                                defaultValue=""
+                                                render={({ field }) => (
+                                                     <>
+                                                    <Button type="submit" name ="submitButton" value="submitButton1"
+                                                             disabled={isSubmitButtonDisabled}>
+                                                        <img className="padding_top" src={submitbtn}
+                                                         onClick={() => setValue('submitButton', 'submitButton')}
+                                                        {...field} />
+                                                    </Button>
+                    
+                                                    <Button type="submit" name ="submitButton" value="submitButton2"
+                                                            disabled={isonHoldButtonDisabled} >
+                                                        <img className="padding_top" src={onhold}
+                                                         onClick={() => setValue('submitButton', 'onHoldButton')}
+                                                        {...field} />
+                                                    </Button>
+                                                    <Button type="submit" name ="submitButton" value="submitButton3"
+                                                            disabled={isDeleteButtonDisabled} >
+                                                        <img className="padding_top" src={deletebtn}
+                                                         onClick={() => setValue('submitButton', 'deleteButton')}
+                                                        {...field} />
+                                                    </Button>
+                                                </>
+                                            )}
+                                            />
                                             </Grid>
                                         </form>
                                     </Grid>
