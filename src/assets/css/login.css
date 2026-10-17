@@ -1,0 +1,22 @@
+.grid-item{
+  display: flex;
+   flex-direction: row;
+  padding-top: 15px;
+}
+.grid-container{
+  justify-content:center;
+  align-items: center;
+}
+#label-item{
+  font-size: large;
+  font-weight: bolder;
+  margin-left: 100px;
+  padding:10px
+}
+#message{
+  font-size: large;
+  font-weight: bolder;
+  margin-left: 100px;
+  padding:10px;
+  color:red;
+}
