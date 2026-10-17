@@ -1,0 +1,54 @@
+grid-container-bbs{
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    height: 40px;
+    padding:10px
+}
+.p6red_bg_left{
+width:7px;
+background-image: url(../images/6th_page_bg_left.gif);
+background-position:top left;
+background-repeat:no-repeat;
+}
+
+.p6red_bg_midle{
+height: 30px;
+background-image: url(../images/6th_page_bg_middle.gif);
+background-position:top left;
+background-repeat: repeat-x;
+}
+
+.p6red_bg_right{
+width:7px;
+background-image: url(../images/6th_page_bg_right.gif);
+background-position:top right;
+background-repeat:no-repeat;
+}
+.black{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color: #000000;
+font-size:12px;
+display: flex;
+justify-content:center;
+padding: 10px;
+}
+.leftmenu_bg{
+background-color:#DCE8FF;
+padding:1px;
+margin-top: 2px;
+margin-bottom: 5px;
+
+}
+.black_left_menu{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:  blue;
+font-size:11px;
+line-height:22px;
+text-decoration: underline;
+
+}
+.container{
+    margin-top: 20px;
+    margin-left: 12px;
+}

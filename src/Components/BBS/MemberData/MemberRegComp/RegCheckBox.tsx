@@ -41,8 +41,8 @@ const RegCheckBox = ({
     } else if (error2 && inputRef2.current) {
       inputRef2.current?.focus();
     }
-   
-  }, [error1,error2]);
+
+  }, [error1, error2]);
   return (
     <div>
       <Grid container item xs={12}>
@@ -74,7 +74,7 @@ const RegCheckBox = ({
                 checked={field.value}
                 type="checkbox"
                 value="D.その他"
-                // {...register("checkboxGroup")}
+              // {...register("checkboxGroup")}
               ></input>
             )}
           />
@@ -94,7 +94,7 @@ const RegCheckBox = ({
                 checked={field.value}
                 type="checkbox"
                 value=" B.不安神経症"
-                // {...register("checkboxGroup")}
+              // {...register("checkboxGroup")}
               ></input>
             )}
           />
@@ -112,7 +112,7 @@ const RegCheckBox = ({
                 checked={field.value}
                 type="checkbox"
                 value="E.成長の部屋"
-                // {...register("checkboxGroup")}
+              // {...register("checkboxGroup")}
               ></input>
             )}
           />
@@ -132,7 +132,7 @@ const RegCheckBox = ({
                 checked={field.value}
                 type="checkbox"
                 value="C.強迫神経症"
-                // {...register("checkboxGroup")}
+              // {...register("checkboxGroup")}
               ></input>
             )}
           />
@@ -148,8 +148,8 @@ const RegCheckBox = ({
                 {...field}
                 checked={field.value}
                 type="checkbox"
-                value="F.新規1"
-                // {...register("checkboxGroup")}
+                value="F.日記"
+              // {...register("checkboxGroup")}
               ></input>
             )}
           />
@@ -190,8 +190,8 @@ const RegCheckBox = ({
                 type="checkbox"
                 value=" G.新規２"
                 checked={field.value}
-                // onChange={(e) => field.onChange(e.target.checked)}
-                // {...register("checkboxGroup")}
+              // onChange={(e) => field.onChange(e.target.checked)}
+              // {...register("checkboxGroup")}
               ></input>
             )}
           />
