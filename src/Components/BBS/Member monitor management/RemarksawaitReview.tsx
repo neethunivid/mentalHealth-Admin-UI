@@ -156,7 +156,7 @@ const Remarksawait_review = () => {
             btn_name="日記へ"
             reviewCountData={reviewCountData?.addition1}
             //label="F.新規（１）名称"
-            label="F. 日記"
+            label="F.日記"
             handleClick={() => naviagteHandle("addition1")}
           />
           <Remark_await_additionComp
