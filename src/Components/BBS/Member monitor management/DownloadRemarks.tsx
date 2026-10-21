@@ -68,15 +68,15 @@ const DownloadRemark = () => {
 
     };
 
-    
+
     const remarkCsvDownload = () => {
         const formData = getValues();
-        if(!batchDownload&&!downloadByType){
+        if (!batchDownload && !downloadByType) {
             alert("ダウンロード方法を選択し、ダウンロードボタンを押して下さい。");
             return
-        }else{
+        } else {
             DownloadCsvRemark(formData)
-        }      
+        }
     };
     const handleReset = () => {
         setResetDateFields(true);
@@ -328,7 +328,7 @@ const DownloadRemark = () => {
                                         render={({ field }) => <input type="checkbox" {...field} checked={field.value && !batchDownload}
                                             onChange={(e) => handleDownloadByType('addition1', e.target.checked)} />}
                                     />
-                                    <span className="black">新規1 </span>
+                                    <span className="black">日記 </span>
                                 </Grid>
                                 <Grid paddingRight={2}>
                                     <Controller
@@ -413,12 +413,12 @@ const DownloadRemark = () => {
                                                         ●ID：{item.memberid}
                                                     </Grid>
                                                     <Grid item xs={12}>
-                                                         ●タイプ区分：{item.normal===1? "普通神経症の部屋":
-                                                                    item.other===1?"その他の部屋":
-                                                                    item.blackmail===1?"強迫神経症の部屋":
-                                                                    item.anxiety===1?"不安神経症の部屋":
-                                                                    item.growingup===1?"成長の部屋":
-                                                                    item.addition?item.addition:item.additional}
+                                                        ●タイプ区分：{item.normal === 1 ? "普通神経症の部屋" :
+                                                            item.other === 1 ? "その他の部屋" :
+                                                                item.blackmail === 1 ? "強迫神経症の部屋" :
+                                                                    item.anxiety === 1 ? "不安神経症の部屋" :
+                                                                        item.growingup === 1 ? "成長の部屋" :
+                                                                            item.addition ? item.addition : item.additional}
                                                     </Grid>
                                                     <Grid item xs={12}>
                                                         ●Mail：{item.emailPc}

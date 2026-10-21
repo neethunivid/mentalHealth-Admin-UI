@@ -37,7 +37,7 @@ const UserWithdrawn = () => {
     const [isonHoldButtonDisabled, setonHoldButtonDisabled] = useState(false);
     const [isDeleteButtonDisabled, setDeleteButtonDisabled] = useState(false);
     const onSubmit = async (data: any) => {
-
+        console.log(data);
         if (!data.statement_title) {
             alert("発言タイトルを入力してください。");
             setError("statement_title", {
@@ -66,14 +66,14 @@ const UserWithdrawn = () => {
             return;
         }
 
-        else if (!ischeckadd1Checked && data.addition1) {
+        else if (!data.isChk_add1 && data.addition1) {
             alert("新しい1を選択");
             setError("addition1", {
                 type: "required",
             });
             return;
         }
-        else if (!ischeckadd2Checked && data.addition2) {
+        else if (!data.isChk_add2 && data.addition2) {
             alert("新しい2を選択");
             setError("addition2", {
                 type: "required",
@@ -86,14 +86,14 @@ const UserWithdrawn = () => {
             alert("部屋を選んでください。");
             return;
         }
-        else if (ischeckadd1Checked == true && data.addition1 == "") {
+        else if (data.ischeckadd1Checked == true && data.addition1 == "") {
             alert("新規1の部屋に入ってください。");
             setError("addition1", {
                 type: "required",
             });
             return;
         }
-        else if (ischeckadd2Checked == true && data.addition2 == "") {
+        else if (data.ischeckadd2Checked == true && data.addition2 == "") {
             alert("新規2の部屋に入ってください。");
             setError("addition2", {
                 type: "required",
@@ -1161,7 +1161,7 @@ const UserWithdrawn = () => {
                                                                     setadd2Checked(false);
                                                                 }}
                                                             />
-                                                            <label className="verdana">F.日記</label>
+                                                            <label className="verdana"> F.新規1</label>
                                                             <input
                                                                 type="text"
                                                                 className="bdr_text_small"

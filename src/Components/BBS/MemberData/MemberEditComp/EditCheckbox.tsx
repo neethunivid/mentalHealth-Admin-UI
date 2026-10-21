@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 interface LayoutProps {
     control: any;
-    setValue: (name: string, value: any) => void;
+    setValue: (name: string, value: any) => void; 
     defaultValue: any;
     defaultValue1?: any;
     defaultValue2?: any;
@@ -46,22 +46,22 @@ const EditCheckBox = ({
 
     }, [error1, error2]);
 
-    const handleCheckboxChange = (field: any, fieldName: string) => {
-        return (event: React.ChangeEvent<HTMLInputElement>) => {
-            const checked = event.target.checked;
-
-            // Reset other checkboxes
-            if (checked) {
-                setValue("checkboxGroup", fieldName === "checkboxGroup");
-                setValue("checkboxGroup1", fieldName === "checkboxGroup1");
-                setValue("checkboxGroup2", fieldName === "checkboxGroup2");
-                setValue("checkboxGroup3", fieldName === "checkboxGroup3");
-                setValue("checkboxGroup4", fieldName === "checkboxGroup4");
-                setValue("checkboxGroup5", fieldName === "checkboxGroup5");
-                setValue("checkboxGroup6", fieldName === "checkboxGroup6");
-            }
+        const handleCheckboxChange = (field: any, fieldName: string) => {
+            return (event: React.ChangeEvent<HTMLInputElement>) => {
+                const checked = event.target.checked;
+    
+                // Reset other checkboxes
+                if (checked) {
+                    setValue("checkboxGroup", fieldName === "checkboxGroup");
+                    setValue("checkboxGroup1", fieldName === "checkboxGroup1");
+                    setValue("checkboxGroup2", fieldName === "checkboxGroup2");
+                    setValue("checkboxGroup3", fieldName === "checkboxGroup3");
+                    setValue("checkboxGroup4", fieldName === "checkboxGroup4");
+                    setValue("checkboxGroup5", fieldName === "checkboxGroup5");
+                    setValue("checkboxGroup6", fieldName === "checkboxGroup6");
+                }
+            };
         };
-    };
 
     return (
         <div>
@@ -173,13 +173,13 @@ const EditCheckBox = ({
                                 {...field}
                                 checked={field.value}
                                 type="checkbox"
-                                value="F.日記"
+                                value="F.新規1"
                                 onChange={handleCheckboxChange(field, "checkboxGroup5")}
                             // {...register("checkboxGroup")}
                             ></input>
                         )}
                     />
-                    <label className="verdana"> F.日記</label>
+                    <label className="verdana"> F.新規1</label>
                     <Controller
                         control={control}
                         defaultValue={defaultTitle1}

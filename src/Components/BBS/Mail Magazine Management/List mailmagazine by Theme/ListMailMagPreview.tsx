@@ -16,38 +16,38 @@ const ListMailMagPreview = () => {
   }, []);
 
   //to previous screen
-  const handleBackButtonClick=()=>{
+  const handleBackButtonClick = () => {
     window.history.back();
   }
 
-//calls the update api here
- const handleUpdateButtonClick=()=>{
+  //calls the update api here
+  const handleUpdateButtonClick = () => {
     themeUpdateApi();
- }
+  }
 
-// function to call update api
+  // function to call update api
   const themeUpdateApi = async () => {
     const dataRequest = {
-      mailMagJobId:  location.state.data.mailMagJobId,
+      mailMagJobId: location.state.data.mailMagJobId,
       subject: location.state.data.subject,
-      text:location.state.data.text,
+      text: location.state.data.text,
       sendOutTime: location.state.data.sendOutTime,
       type: location.state.data.type,
       date: location.state.data.date,
       sendStatus: 0,
       status: 0,
     };
-    try { 
-      const apiData=await apiClient.put(`api/mailmag/magThemeUpdate/${location.state.data.id}`,dataRequest,{})
-      if(apiData){
+    try {
+      const apiData = await apiClient.put(`api/mailmag/magThemeUpdate/${location.state.data.id}`, dataRequest, {})
+      if (apiData) {
         //clear from session Storage
         sessionStorage.removeItem("mailmagazineTheme");
         //navigate to list mail magazine by theme home screen
-          window.location.href = '/mailmagazinetheme';
+        window.location.href = '/mailmagazinetheme';
       }
 
     } catch (error) {
-    alert(error);
+      alert(error);
     }
   };
   return (
@@ -56,8 +56,8 @@ const ListMailMagPreview = () => {
         <LeftPanBBS />
       </Grid>
       <Grid item xs={9}>
-        <ListMailMagThemeHeader label1="   D.メルマガ会員へのメール送信（修正）" label2="メルマガ管理"/>
-     
+        <ListMailMagThemeHeader label1="   D.メルマガ会員へのメール送信（修正）" label2="メルマガ管理" />
+
         <Grid className="hr"></Grid>
         <Grid className="hr"></Grid>
         <Grid className="content-row gridmrglft">
@@ -66,7 +66,7 @@ const ListMailMagPreview = () => {
             <Grid className="hr" />
             <Grid className="content-row">
               <Grid xs={11}>
-              {/* ★トピック */}
+                {/* ★トピック */}
                 <Grid className="black">Topic</Grid>
                 <Grid className="hr" />
                 <Grid className="black">{location.state.data.topicName}</Grid>
@@ -103,7 +103,7 @@ const ListMailMagPreview = () => {
               </span>
             </Grid>
             <Grid className="tpspc_1" />
-            <Grid className="black">{location.state.data.type=='pc'?"★メール内容(PC)":"	★メール内容(携帯）"}</Grid>
+            <Grid className="black">{location.state.data.type == 'pc' ? "★メール内容(PC)" : "	★メール内容(携帯）"}</Grid>
             <Grid className="black">
               <span style={{ whiteSpace: "pre-wrap" }}>{location.state.data?.text}</span>
             </Grid>
@@ -117,13 +117,13 @@ const ListMailMagPreview = () => {
             </Grid>
             <Grid className="hr" />
             <Grid className="content-row">
-            <Button type="submit" onClick={()=>handleUpdateButtonClick()}>
-                  <img src={ButtonLeft} />
-                </Button>
-                <Button onClick={()=>handleBackButtonClick()}>
-                  <img src={ButtonRight} />
-                </Button>
-              </Grid>
+              <Button type="submit" onClick={() => handleUpdateButtonClick()}>
+                <img src={ButtonLeft} />
+              </Button>
+              <Button onClick={() => handleBackButtonClick()}>
+                <img src={ButtonRight} />
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

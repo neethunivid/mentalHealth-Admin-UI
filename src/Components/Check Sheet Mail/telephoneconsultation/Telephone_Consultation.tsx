@@ -36,6 +36,18 @@ const TelephoneConsultation = () => {
   const { age, sessions, gender, self, symptomsList, StyledMenuItem } = getOptions();
   const navigate = useNavigate()
 
+  // Fetch next auto-increment number for the "No" field from the tel_conselling table
+  const fetchNextNo = async () => {
+    try {
+      const res = await apiClient.get("/api/telcounselling/next-id");
+      // API response: { code: 1, error: null, data: { nextId: 13 } }
+      const nextNo = res?.data?.data?.nextId ?? "";
+      setValue('no', String(nextNo));
+    } catch (error) {
+      console.error("Error fetching next no:", error);
+    }
+  };
+
   // used to fetch data for different selection field counselorlist,jo,route and mainissues
   const fetchData = async () => {
     try {
@@ -57,6 +69,7 @@ const TelephoneConsultation = () => {
   };
 
   useEffect(() => {
+    fetchNextNo();
     fetchData();
   }, []);
 
@@ -111,7 +124,7 @@ const TelephoneConsultation = () => {
     const requiredFields = [
       'date', 'sessions', 'routeselected', 'counsellor',
       'gender', 'age', 'job', 'userType', 'mainIssues',
-      'adviceselected', 'problemDetails', 'adviceDetails'
+      'adviceselected', 'problemDetails'
     ];
 
     for (const field of requiredFields) {
@@ -154,8 +167,8 @@ const TelephoneConsultation = () => {
         >
           <Grid container className="content-row content-padding" xs={12} spacing={2}>
             <Grid item xs={12} sm={2} className="content-row tel-list-padding">
-            <label className="text" style={{ whiteSpace: 'nowrap' }}>・No</label>
-            <InputText
+              <label className="text" style={{ whiteSpace: 'nowrap' }}>・No</label>
+              <InputText
                 className="text_input"
                 control={control}
                 name="no"
@@ -164,20 +177,20 @@ const TelephoneConsultation = () => {
                 readOnly={true}
                 error={errors.no?.message}
               />
-                </Grid>
-              <Grid item xs={12} sm={2} className="content-row tel-list-padding">
+            </Grid>
+            <Grid item xs={12} sm={2} className="content-row tel-list-padding">
               <label className="text" style={{ whiteSpace: 'nowrap' }}>・受付日</label>
               <InputText
                 control={control}
                 name="date"
-                defaultValue={setValue}
+                defaultValue={""}
                 className="text_input"
                 setValue={setValue}
                 error={errors.date}
                 readOnly={true}
               />
             </Grid>
-            
+
 
             <Grid item xs={12} sm={2} className="content-row tel-list-padding">
               <label className="text" style={{ whiteSpace: 'nowrap' }}>・回数</label>
@@ -191,55 +204,55 @@ const TelephoneConsultation = () => {
               />
             </Grid>
 
-            <Grid item container xs={12} sm={4} spacing={1} alignItems="center"> 
-                <label className="text">・認知経路</label>
-                <Select
-                  multiple
-                  value={selectedRoute}
-                  name="route"
-                  displayEmpty
-                  placeholder="選択する"
-                  onChange={(event) => {
-                    const selectedValues = event.target.value as string[];
-                    setSelectedRoute(selectedValues);
-                    setValue("routeselected", selectedValues.join(','));
-                  }}
-                  renderValue={(selected: string[]) => {
-                    if (selected.length === 0) {
-                      return (
-                        <label className="left-aligned-text">
-                          選択する
-                        </label>
-                      );
-                    }
-                    return(
+            <Grid item container xs={12} sm={4} spacing={1} alignItems="center">
+              <label className="text">・認知経路</label>
+              <Select
+                multiple
+                value={selectedRoute}
+                name="route"
+                displayEmpty
+                placeholder="選択する"
+                onChange={(event) => {
+                  const selectedValues = event.target.value as string[];
+                  setSelectedRoute(selectedValues);
+                  setValue("routeselected", selectedValues.join(','));
+                }}
+                renderValue={(selected: string[]) => {
+                  if (selected.length === 0) {
+                    return (
                       <label className="left-aligned-text">
+                        選択する
+                      </label>
+                    );
+                  }
+                  return (
+                    <label className="left-aligned-text">
                       選択された
                     </label>
-                    )
-                  }}
-                  className="custom-select"
-                  inputProps={{
-                    classes: { select: "text_input" },
-                  }}
-                  IconComponent={(props) => (
-                    <KeyboardArrowDownIcon {...props} sx={{ fontSize: '18px' }} />
-                  )}
-                >
-                  {routeOptions.map((route) => (
-                    <StyledMenuItem key={route.name} value={route.name}>
-                      {route.name}
-                    </StyledMenuItem>
-                  ))}
-                </Select>
-                <TelInputText
-                  name="routeselected"
-                  control={control}
-                  defaultValue={selectedRoute.join(', ')}
-                  readOnly={true}
-                  className="text"
-                />
-              
+                  )
+                }}
+                className="custom-select"
+                inputProps={{
+                  classes: { select: "text_input" },
+                }}
+                IconComponent={(props) => (
+                  <KeyboardArrowDownIcon {...props} sx={{ fontSize: '18px' }} />
+                )}
+              >
+                {routeOptions.map((route) => (
+                  <StyledMenuItem key={route.name} value={route.name}>
+                    {route.name}
+                  </StyledMenuItem>
+                ))}
+              </Select>
+              <TelInputText
+                name="routeselected"
+                control={control}
+                defaultValue={selectedRoute.join(', ')}
+                readOnly={true}
+                className="text"
+              />
+
             </Grid>
 
             <Grid item xs={12} sm={2} className="content-row tel-list-padding">
@@ -324,7 +337,7 @@ const TelephoneConsultation = () => {
                 readOnly={true}
               />
               <Grid>
-                <Grid><label className="text">具体的症状(病気不安, 不眠)</label></Grid>
+                <Grid style={{ marginTop: "10px" }}><label className="text">具体的症状(病気不安, 不眠)</label></Grid>
                 <Grid container className="content-row middle_table">
                   {symptomsList.map((symptom) => (
                     <Grid className="content-row reservation-content-marginleft text" xs={12} key={symptom.value}>
@@ -341,60 +354,61 @@ const TelephoneConsultation = () => {
                 </Grid>
               </Grid>
               <Grid className="hr"></Grid>
-              <Grid container item xs={12} style={{ marginTop: '5px' }}>
-              <label className="text"> 助言項目</label>
-              <Select
-                multiple
-                value={selectedAdvise}
-                onChange={(event) => {
-                  const selectedValues = event.target.value as string[];
-                  setSelectedAdvise(selectedValues);
-                  setValue("adviceselected", selectedValues.join(','));
-                }}
-                renderValue={(value) => {
-                  const selected = value as string[];
-                  if (selected.length === 0) {
+              <Grid container item xs={12} style={{ marginTop: '10px', marginBottom: '10px' }}>
+                <label className="text"> 助言項目</label>
+                <Select
+                  multiple
+                  value={selectedAdvise}
+                  onChange={(event) => {
+                    const selectedValues = event.target.value as string[];
+                    setSelectedAdvise(selectedValues);
+                    setValue("adviceselected", selectedValues.join(','));
+                  }}
+                  renderValue={(value) => {
+                    const selected = value as string[];
+                    if (selected.length === 0) {
+                      return (
+                        <label className="left-aligned-text">
+                          選択する
+                        </label>
+                      );
+                    }
                     return (
                       <label className="left-aligned-text">
-                        選択する
+                        選択された
                       </label>
-                    );
-                  }
-                  return(
-                    <label className="left-aligned-text">
-                    選択された
-                  </label>
-                  )
-                }}
-                className="custom-select"
-                inputProps={{
-                  classes: { select: "text_input" },
-                }}
-                displayEmpty={true}
-                IconComponent={(props) => (
-                  <KeyboardArrowDownIcon {...props} sx={{ fontSize: '18px' }} />
-                )}
-              >
-                {adviseOptions.map((advise) => (
-                  <StyledMenuItem disableRipple key={advise.name} value={advise.name} >
-                    {advise.name}
-                  </StyledMenuItem>
-                ))}
-              </Select>
-              <TelInputText
-                name="adviceselected"
-                className="text"
-                control={control}
-                defaultValue={selectedAdvise.join(', ')}
-                readOnly={true}
-              />
+                    )
+                  }}
+                  className="custom-select"
+                  inputProps={{
+                    classes: { select: "text_input" },
+                  }}
+                  displayEmpty={true}
+                  IconComponent={(props) => (
+                    <KeyboardArrowDownIcon {...props} sx={{ fontSize: '18px' }} />
+                  )}
+                >
+                  {adviseOptions.map((advise) => (
+                    <StyledMenuItem disableRipple key={advise.name} value={advise.name} >
+                      {advise.name}
+                    </StyledMenuItem>
+                  ))}
+                </Select>
+                <TelInputText
+                  name="adviceselected"
+                  className="text"
+                  control={control}
+                  defaultValue={selectedAdvise.join(', ')}
+                  readOnly={true}
+                />
               </Grid>
             </Grid>
             <Grid item xs={6} container paddingLeft={5} paddingBottom={1} >
               <Grid container direction="column" item>
                 <Grid className="hr" />
                 <Grid item>
-                  <label className="text">・悩みの内容</label>
+                  <label className="text"> . 利用者の悩みとアドバイス</label>
+                  {/* <label className="text">・悩みの内容</label> */}
                 </Grid>
                 <Grid item padding={1}>
                   <InputTextArea
@@ -406,7 +420,7 @@ const TelephoneConsultation = () => {
                   />
                 </Grid>
               </Grid>
-              <Grid container direction="column" item>
+              {/* <Grid container direction="column" item>
                 <Grid className="hr" />
                 <Grid item>
                   <label className="text">・助言の内容</label>
@@ -420,7 +434,7 @@ const TelephoneConsultation = () => {
                     error={errors.adviceDetails}
                   />
                 </Grid>
-              </Grid>
+              </Grid> */}
             </Grid>
             <Grid>
             </Grid>
@@ -439,8 +453,8 @@ const TelephoneConsultation = () => {
             </Button>
           </Grid>
         </form>
-      </Grid>
-    </Grid>
+      </Grid >
+    </Grid >
   )
 }
 
