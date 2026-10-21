@@ -170,8 +170,8 @@ const HeaderRoutes: React.FC = () => {
   const isLoginPage =
     location.pathname === "/login" ||
     location.pathname === "/" ||
-    location.pathname=="/logout"||
-    
+    location.pathname == "/logout" ||
+
     location.pathname == "/home";
 
   return (
@@ -209,12 +209,12 @@ const HeaderRoutes: React.FC = () => {
         <Route path="/remarkpending" element={<Remarkspending_review />} />
         <Route path="/underreview" element={<UnderReview />} />
         <Route path="/membersearch" element={<MemberSearchComponent />} />
-        <Route path="/membersearchlist" element={<MemberSearchList/>}/>
+        <Route path="/membersearchlist" element={<MemberSearchList />} />
         <Route path="/memberlist" element={< MemberListComponent />} />
         <Route path="/memberedit" element={< MemberEdit />} />
         <Route path="/membereditpreview" element={< MemberEditPreview />} />
-        <Route path="/listmailmagazinebbs" element={<ListMailMagazineBBS />} /> 
-        <Route path="/sendmailtobbs" element={<SendEmailToMemberBBS />} /> 
+        <Route path="/listmailmagazinebbs" element={<ListMailMagazineBBS />} />
+        <Route path="/sendmailtobbs" element={<SendEmailToMemberBBS />} />
         <Route path="/userwithdrawn" element={<UserWithdrawn />} />
         <Route path="/searchmailmemberbbs" element={<SearchDeleteMailmembersbbs />} />
         <Route path="/searchmailmembergeneral" element={<SearchDeleteMailmembersgeneral />} />
@@ -225,121 +225,121 @@ const HeaderRoutes: React.FC = () => {
         <Route path="/pendingreview" element={<UserPendingReview />} />
         <Route path="/updateresponsepage" element={<UpdateresponseHeader />} />
         <Route path="/editmailmembergeneral" element={<EditMailMemberGeneral />} />
-        <Route path="/mailmagazinetheme" element={<ListMailMagazine_Theme/>}/>
-        <Route path="/emailreplytheme" element={<EmailReply_Theme/>}/>
-        <Route path="emailreplypreview" element={<ListMailMagPreview/>}/>
+        <Route path="/mailmagazinetheme" element={<ListMailMagazine_Theme />} />
+        <Route path="/emailreplytheme" element={<EmailReply_Theme />} />
+        <Route path="emailreplypreview" element={<ListMailMagPreview />} />
         <Route path="/emailbbsedit" element={<BBSmail_correction />} />
         <Route path="/emailbbspreview" element={<EmailEdit_BBS />} />
         <Route path="/emailbbsview" element={<SendMailView_BBS />} />
-        <Route path="/listmailmagazinegeneral" element={<ListMailMagazineGeneral />} /> 
+        <Route path="/listmailmagazinegeneral" element={<ListMailMagazineGeneral />} />
         <Route path="/mailcorrectiongeneral" element={<GeneralMailCorrection />} />
         <Route path="/mailcorrectiongeneralPrev" element={<GeneralMailCorrectionPreview />} />
-        <Route path="/sendmailtogeneral" element={<SendEmailToMemberGeneral />} /> 
-        <Route path="/sendmailview" element={<SendMailView/>} /> 
-        <Route path="/sendmailmagbbs" element={<SendMailMagazineBBS/>} /> 
-        <Route path="/sendmailmagbbspreview" element={<SendMailBBSPreview/>} />
-        <Route path="/sendmailmagtheme" element={<EmailMAILmag_Theme/>} />
-        <Route path="/sendmailmagpreview" element={<SendmailmagPreviewtheme/>} />
-        <Route path="/adminsettings" element={<AdminSettings/>} />
-        <Route path="/adminfinish" element={<AdminFinish/>}/>
-        <Route path="/sendmailmaggeneral" element={<SendMailMagazineGeneral/>} /> 
-        <Route path="/sendmailmaggeneralpreview" element={<SendMailGeneralPreview/>} />
+        <Route path="/sendmailtogeneral" element={<SendEmailToMemberGeneral />} />
+        <Route path="/sendmailview" element={<SendMailView />} />
+        <Route path="/sendmailmagbbs" element={<SendMailMagazineBBS />} />
+        <Route path="/sendmailmagbbspreview" element={<SendMailBBSPreview />} />
+        <Route path="/sendmailmagtheme" element={<EmailMAILmag_Theme />} />
+        <Route path="/sendmailmagpreview" element={<SendmailmagPreviewtheme />} />
+        <Route path="/adminsettings" element={<AdminSettings />} />
+        <Route path="/adminfinish" element={<AdminFinish />} />
+        <Route path="/sendmailmaggeneral" element={<SendMailMagazineGeneral />} />
+        <Route path="/sendmailmaggeneralpreview" element={<SendMailGeneralPreview />} />
 
         {/*  <Route component={NotFound} /> */}
 
         {/*================================ Check Sheet Mail Routes============================================= */}
-        <Route path="/checksheet1" element={<MoritoNervous/>}/>
-        <Route path="/checksheet-create" element={<MoritaEmailReplay/>}/>
-        <Route path="/checksheet2" element={<Social_phobia/>}/>
-        <Route path="/checksheet3" element={<Panic_Disorder/>}/>
-        <Route path="/checksheet4" element={<Depression/>}/>
-        <Route path="/checksheet5" element={<CompulsiveDisorder/>}/>
-        <Route path="/mailsend_and_reservation_oneyearlist" element={<EmailReception/>}/>
-        <Route path="/pasthistory" element={<PastHistory/>}/>
-        <Route path="/dailymailcount" element={<DailyEmail/>}/>
-        <Route path="/monthlymailcount" element={<Monthly_report_mail_count/>}/>
-        <Route path="/dailycountchecksheet" element={<DailyCheckSheetReport/>}/>
-        <Route path="/monthlycountchecksheet" element={<MonthlyReportCheckSheet/>}/>
-        <Route path ="/responsetemplate" element={<ResponseTemplate/>}/>
-        <Route path ="/newtemplate" element={<NewTemplateCreate/>}/>
-        <Route path ="/confirmtemplate" element={<TemplateConfirmation/>}/>
-        <Route path ="/edittemplate" element={<EditTemplate/>}/>
-        <Route path='/editpreview' element={<TemplatePreview_2/>}/>
-        <Route path ="/diagnosismailing_list" element={<Reservation_List/>}/>
-        <Route path="/Reservemailreply" element={<ReserveListmailReplay/>}/>
-        <Route path="/Reservemailpreview" element={<ReserveListmailPreview/>}/>
-        <Route path="/reservationdetaillist" element={<Detailed_List/>}/>
-        <Route path="/checksheetEmailedit" element={<CheckSheetSendMailEdit/>}/>
-        <Route path ="/emailpreview" element={<MoritaEmailPreview/>}/>
-        <Route path ="/checksheetsendmail" element={<CheckSheetSendMail/>}/>
-        <Route path="/checksheetdeletedemail" element={<DeletedEmails/>}/>
-        <Route path="/dailyagereport" element={<DailyAgeReport/>}/>
-        <Route path="/dailygenderreport" element={<DailyGenderReport/>}/>
-        <Route path="/telcounsellingdiagramlist" element={<DiagramList/>}/>
-        <Route path="/telcounsellingsearch" element={<TelcounsellingSearch/>}/>
-        <Route path="/telephoneconsultationview" element ={<TelephoneConsultationView/>}/>
-        <Route path="/telephoneconsultationedit" element={<TelephoneConsultationEdit/>}/>
-        <Route path="/telephoneconsultation" element={<TelephoneConsultation/>}/>
-        <Route path="/deleteresponse" element={<DeleteresponseHeader/>}/>
-        <Route path="/savedresponse" element={<SavedresponseHeader/>}/>
-        
-
-        
-        {/* =============================== Reservation Counseling ======================================*/} 
-        <Route path="/reservationslotlist" element={<Reservation_list_slot/>}/>
-        <Route path="/reservation_list_confirm_reservation" element={<Reservation_confirmation/>}/>
-        <Route path="/todays_cancellations" element={<Reservation_cancel/>}/>
-        <Route path="/addcounselors" element={<Registration_counselors/>}/>
-        <Route path="/reservationreg_cancel" element={<Reservationreg_cancel/>}/>
-        <Route path="/reservationlist" element={<ReservationListDownload/>}/>
+        <Route path="/checksheet1" element={<MoritoNervous />} />
+        <Route path="/checksheet-create" element={<MoritaEmailReplay />} />
+        <Route path="/checksheet2" element={<Social_phobia />} />
+        <Route path="/checksheet3" element={<Panic_Disorder />} />
+        <Route path="/checksheet4" element={<Depression />} />
+        <Route path="/checksheet5" element={<CompulsiveDisorder />} />
+        <Route path="/mailsend_and_reservation_oneyearlist" element={<EmailReception />} />
+        <Route path="/pasthistory" element={<PastHistory />} />
+        <Route path="/dailymailcount" element={<DailyEmail />} />
+        <Route path="/monthlymailcount" element={<Monthly_report_mail_count />} />
+        <Route path="/dailycountchecksheet" element={<DailyCheckSheetReport />} />
+        <Route path="/monthlycountchecksheet" element={<MonthlyReportCheckSheet />} />
+        <Route path="/responsetemplate" element={<ResponseTemplate />} />
+        <Route path="/newtemplate" element={<NewTemplateCreate />} />
+        <Route path="/confirmtemplate" element={<TemplateConfirmation />} />
+        <Route path="/edittemplate" element={<EditTemplate />} />
+        <Route path='/editpreview' element={<TemplatePreview_2 />} />
+        <Route path="/diagnosismailing_list" element={<Reservation_List />} />
+        <Route path="/Reservemailreply" element={<ReserveListmailReplay />} />
+        <Route path="/Reservemailpreview" element={<ReserveListmailPreview />} />
+        <Route path="/reservationdetaillist" element={<Detailed_List />} />
+        <Route path="/checksheetEmailedit" element={<CheckSheetSendMailEdit />} />
+        <Route path="/emailpreview" element={<MoritaEmailPreview />} />
+        <Route path="/checksheetsendmail" element={<CheckSheetSendMail />} />
+        <Route path="/checksheetdeletedemail" element={<DeletedEmails />} />
+        <Route path="/dailyagereport" element={<DailyAgeReport />} />
+        <Route path="/dailygenderreport" element={<DailyGenderReport />} />
+        <Route path="/telcounsellingdiagramlist" element={<DiagramList />} />
+        <Route path="/telcounsellingsearch" element={<TelcounsellingSearch />} />
+        <Route path="/telephoneconsultationview" element={<TelephoneConsultationView />} />
+        <Route path="/telephoneconsultationedit" element={<TelephoneConsultationEdit />} />
+        <Route path="/telephoneconsultation" element={<TelephoneConsultation />} />
+        <Route path="/deleteresponse" element={<DeleteresponseHeader />} />
+        <Route path="/savedresponse" element={<SavedresponseHeader />} />
 
 
-      {/* ================================= Library================================================================ */}
-      <Route path="/newlenderregister" element={<New_lender_Reg/>} />
-      <Route path="/newlenderpreview" element={<New_lender_preview/>}/>
-      <Route path="/lenderlist" element={<LenderList/>} />
-      <Route path='/editlendersearch' element={<Search_registrant/>}/>
-      <Route path='/editlenderlist' element={<Registrant_list/>}/>
-      <Route path='/registrantedit' element={<Registratnt_edit/>}/>
-      <Route path='/loanlistbooks' element={<Loan_list_book/>}/>
-      <Route path='/editloancontents' element={<Editing_loan_modifying/>}/>
-      <Route path="/editlender" element={<Edit_lenderProfile/>} />
-      <Route path="/allbooks" element={<Download_library/>}/>
-      <Route path="/lendingbooks" element={<Download_loan/>}/>
-      <Route path="/booklist" element={<BookList/>}/>
-      <Route path="/booksearch" element={<SearchModifyViewBook/>}/>
-      <Route path="/searchlist" element={<SearchList/>}/>
-      <Route path="/libraryhomepage" element={<LibraryHomePage/>}/>
-      <Route path="/loanlender" element={<Edit_Loancontent/>}/>
-      {/* <Route path="/booklendingreturn" element={<Registration_Lending_return/>}/> */}
-      <Route path="/recommendbooks" element={<RecommendBookManage/>}/>
-       <Route path="/webbookpublish" element={<BookPublish_Web/>}/>
-       <Route path="/publishedbooklist" element={<ManagementWebPosting/>}/>
-       <Route path="/addC1Abook" element={<AddC1Abook/>}/>
-        <Route path="/adddel" element={<AddDel/>}/>
-        <Route path="/manageMoritaOthers" element={<NewbooksMoritaOther/>}/>
-        <Route path="/G1upload" element={<G1UploadPDF/>}/>
-        <Route path="uploadPDF" element={<BookSearchUpload/>}/>
-        <Route path="/uploadPDFlist" element={<BookSearchUploadList/>}/>
-        <Route path="/uploadPDFseparate" element={<BookSearchUploadSeparate/>}/>
-        <Route path="/uploadPDFseparatelist" element={<BookSearchUploadSeparateList/>}/>
-        <Route path="/G2uploadseparate" element={<G2UploadPDFSeparate/>}/>
+
+        {/* =============================== Reservation Counseling ======================================*/}
+        <Route path="/reservationslotlist" element={<Reservation_list_slot />} />
+        <Route path="/reservation_list_confirm_reservation" element={<Reservation_confirmation />} />
+        <Route path="/todays_cancellations" element={<Reservation_cancel />} />
+        <Route path="/addcounselors" element={<Registration_counselors />} />
+        <Route path="/reservationreg_cancel" element={<Reservationreg_cancel />} />
+        <Route path="/reservationlist" element={<ReservationListDownload />} />
+
+
+        {/* ================================= Library================================================================ */}
+        <Route path="/newlenderregister" element={<New_lender_Reg />} />
+        <Route path="/newlenderpreview" element={<New_lender_preview />} />
+        <Route path="/lenderlist" element={<LenderList />} />
+        <Route path='/editlendersearch' element={<Search_registrant />} />
+        <Route path='/editlenderlist' element={<Registrant_list />} />
+        <Route path='/registrantedit' element={<Registratnt_edit />} />
+        <Route path='/loanlistbooks' element={<Loan_list_book />} />
+        <Route path='/editloancontents' element={<Editing_loan_modifying />} />
+        <Route path="/editlender" element={<Edit_lenderProfile />} />
+        <Route path="/allbooks" element={<Download_library />} />
+        <Route path="/lendingbooks" element={<Download_loan />} />
+        <Route path="/booklist" element={<BookList />} />
+        <Route path="/booksearch" element={<SearchModifyViewBook />} />
+        <Route path="/searchlist" element={<SearchList />} />
+        <Route path="/libraryhomepage" element={<LibraryHomePage />} />
+        <Route path="/loanlender" element={<Edit_Loancontent />} />
+        {/* <Route path="/booklendingreturn" element={<Registration_Lending_return/>}/> */}
+        <Route path="/recommendbooks" element={<RecommendBookManage />} />
+        <Route path="/webbookpublish" element={<BookPublish_Web />} />
+        <Route path="/publishedbooklist" element={<ManagementWebPosting />} />
+        <Route path="/addC1Abook" element={<AddC1Abook />} />
+        <Route path="/adddel" element={<AddDel />} />
+        <Route path="/manageMoritaOthers" element={<NewbooksMoritaOther />} />
+        <Route path="/G1upload" element={<G1UploadPDF />} />
+        <Route path="uploadPDF" element={<BookSearchUpload />} />
+        <Route path="/uploadPDFlist" element={<BookSearchUploadList />} />
+        <Route path="/uploadPDFseparate" element={<BookSearchUploadSeparate />} />
+        <Route path="/uploadPDFseparatelist" element={<BookSearchUploadSeparateList />} />
+        <Route path="/G2uploadseparate" element={<G2UploadPDFSeparate />} />
         {/* <Route path="/Webposting" element={<ManagementWebPosting/>}/> */}
-        <Route path="/EditingExstingRegisterList" element={<EditingExistingRegisterList/>}/>
-        <Route path="/librarycsvupload" element={<Csv_upload/>}/>
-        <Route path="/libraryexcelupload" element={<Excel_upload/>}/>
-        <Route path="/bookview" element={<BookView/>}/>
-        <Route path="/searchbooklender" element={<SearchBookLender/>}/>
-        <Route path="/lendersearchlist" element={<LenderSearchList/>}/>
-        <Route path="/rentalbooksearch" element={<RentalBookSearch/>}/>
-        <Route path="/G2edit" element={<G2Edit/>}/>
-        <Route path="/G2editseparate" element={<G2EditSeparate/>}/>
-        <Route path="/monthly-gender-report" element={<MonthlyGenderReport/>}/>
-        <Route path="/monthly-age-report" element={<MonthlyAgeReport/>}/>
-        <Route path="/daily-illness-report" element={<DailyIllnessReport/>}/>
-        <Route path="/monthly-illness-report" element={<MonthlyIllnessReport/>}/>
-        <Route path="/daily-counselling-report" element={<DailyCounsellingReport/>}/>
-        <Route path="/monthly-counselling-report" element={<MonthlyCounsellingReport/>}/>
+        <Route path="/EditingExstingRegisterList" element={<EditingExistingRegisterList />} />
+        <Route path="/librarycsvupload" element={<Csv_upload />} />
+        <Route path="/libraryexcelupload" element={<Excel_upload />} />
+        <Route path="/bookview" element={<BookView />} />
+        <Route path="/searchbooklender" element={<SearchBookLender />} />
+        <Route path="/lendersearchlist" element={<LenderSearchList />} />
+        <Route path="/rentalbooksearch" element={<RentalBookSearch />} />
+        <Route path="/G2edit" element={<G2Edit />} />
+        <Route path="/G2editseparate" element={<G2EditSeparate />} />
+        <Route path="/monthly-gender-report" element={<MonthlyGenderReport />} />
+        <Route path="/monthly-age-report" element={<MonthlyAgeReport />} />
+        <Route path="/daily-illness-report" element={<DailyIllnessReport />} />
+        <Route path="/monthly-illness-report" element={<MonthlyIllnessReport />} />
+        <Route path="/daily-counselling-report" element={<DailyCounsellingReport />} />
+        <Route path="/monthly-counselling-report" element={<MonthlyCounsellingReport />} />
 
       </Routes>
     </>
