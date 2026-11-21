@@ -87,7 +87,7 @@ const UserWithdrawn = () => {
             return;
         }
         else if (data.ischeckadd1Checked == true && data.addition1 == "") {
-            alert("新規1の部屋に入ってください。");
+            alert("日記の部屋に入ってください。");
             setError("addition1", {
                 type: "required",
             });
@@ -575,6 +575,10 @@ const UserWithdrawn = () => {
         setMailMagazineSubscribe(data?.member?.mailmagazine === 1 ? true : false)
         setMailMagazineCancel(data?.member?.mailmagazine === 2 ? true : false)
 
+        // Sync react-hook-form internal state with loaded data
+        setValue("statement_title", data?.remarks[0]?.title ?? "");
+        setValue("statement_text", data?.remarks[0]?.text ?? "");
+
     };
 
     //render the navigation page buttons to disaply the member details on page number clcik
@@ -1007,12 +1011,13 @@ const UserWithdrawn = () => {
                                                             className="bdr_text2"
                                                             {...register("statement_title")}
                                                             value={itemData && itemData?.remarks ? itemData?.remarks[0]?.title : ""}
-                                                            onChange={(e) =>
+                                                            onChange={(e) => {
+                                                                setValue("statement_title", e.target.value);
                                                                 setItemData((prevData: any) => ({
                                                                     ...prevData,
                                                                     remarks: [{ ...prevData.remarks[0], title: e.target.value }],
-                                                                }))
-                                                            }
+                                                                }));
+                                                            }}
                                                         />
                                                     </Grid>
                                                     <Grid item xs={12}>
@@ -1025,12 +1030,13 @@ const UserWithdrawn = () => {
                                                             className="text_area"
                                                             {...register("statement_text")}
                                                             value={itemData && itemData?.remarks ? itemData?.remarks[0]?.text : ""}
-                                                            onChange={(e) =>
+                                                            onChange={(e) => {
+                                                                setValue("statement_text", e.target.value);
                                                                 setItemData((prevData: any) => ({
                                                                     ...prevData,
                                                                     remarks: [{ ...prevData.remarks[0], text: e.target.value }],
-                                                                }))
-                                                            }
+                                                                }));
+                                                            }}
                                                         ></textarea>
                                                     </Grid>
                                                     <Grid container>
@@ -1165,7 +1171,7 @@ const UserWithdrawn = () => {
                                                                     setadd2Checked(false);
                                                                 }}
                                                             />
-                                                            <label className="verdana"> F.新規1</label>
+                                                            <label className="verdana"> F.日記</label>
                                                             <input
                                                                 type="text"
                                                                 className="bdr_text_small"
