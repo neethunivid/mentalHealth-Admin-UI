@@ -117,6 +117,7 @@ const RegInputField = ({
                   }}
                   type={inputTypePassword == true ? "password" : "text"}
                   className="bdr_text2"
+                  autoComplete={inputTypePassword == true ? "new-password" : "off"}
                 />
               )}
             </>
