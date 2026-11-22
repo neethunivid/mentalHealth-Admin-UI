@@ -269,6 +269,7 @@ const UserWithdrawn = () => {
                 blackmail: blackmailChecked == false ? 0 : 1,
                 other: otherChecked == false ? 0 : 1,
                 growingup: growingupChecked == false ? 0 : 1,
+                diary: ischeckadd1Checked == false ? 0 : 1,
                 addition1: itemData?.remarks[0]?.addition1,
                 addition2: itemData?.remarks[0]?.addition2,
 

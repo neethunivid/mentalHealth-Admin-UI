@@ -34,7 +34,7 @@ const Remarkspending_review = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const stateFromPreviousScreen = location.state;
-
+  console.log("stateFromPreviousScreen >> " + JSON.stringify(stateFromPreviousScreen));
   const reviewData = useSelector((state: any) => {
     return state?.reducer1.data?.reviewLists;
   });
@@ -61,8 +61,9 @@ const Remarkspending_review = () => {
 
   const fetchRemark = async (data?: any) => {
     try {
+      const requestType = data ?? stateFromPreviousScreen.param;
       let dataRequest: any = {
-        type: data ?? stateFromPreviousScreen.param,
+        type: requestType === "addition1" ? "diary" : requestType,
       };
 
       dispatch(fetchData("reviewLists", "api/viewRemarks", dataRequest));
@@ -181,7 +182,7 @@ const Remarkspending_review = () => {
       setValue("st_min", formatedMin);
       count = reviewCountData?.growingup;
       data = stateFromPreviousScreen.counts.growingup;
-    } else if (reviewButton == "addition1") {
+    } else if (reviewButton == "addition1" || reviewButton == "diary") {
       if (reviewData?.data[currentPage - 1]?.remarks == null) {
         remarkCount1 = 1;
       } else {
@@ -197,8 +198,10 @@ const Remarkspending_review = () => {
       );
       setValue("st_hr", formatedHr);
       setValue("st_min", formatedMin);
-      count = reviewCountData?.addition1;
-      data = stateFromPreviousScreen.counts.addition1;
+      count = reviewCountData?.diary ?? reviewCountData?.addition1;
+      data =
+        stateFromPreviousScreen.counts.diary ??
+        stateFromPreviousScreen.counts.addition1;
     } else if (reviewButton == "addition2") {
       if (reviewData?.data[currentPage - 1]?.remarks == null) {
         remarkCount1 = 1;
@@ -221,7 +224,7 @@ const Remarkspending_review = () => {
 
     const pageNumbers = [];
     const pageCount = 2; // Number of page numbers to display at a time
-    const totalPageCount = count ?? data;
+    const totalPageCount = reviewData?.data?.length ?? count ?? data ?? 0;
 
     // Calculate the start and end page numbers based on the current page
     let startPage = currentPage - Math.floor(pageCount / 2);
@@ -250,17 +253,17 @@ const Remarkspending_review = () => {
             paddingLeft: "5px",
             ...(i === currentPage
               ? {
-                  color: "black",
-                  fontWeight: "bold",
-                }
+                color: "black",
+                fontWeight: "bold",
+              }
               : {
-                  color: "darkblue",
-                  textDecoration: "underline",
-                  paddingBottom: "4px",
-                  fontWeight: "bolder",
-                }),
+                color: "darkblue",
+                textDecoration: "underline",
+                paddingBottom: "4px",
+                fontWeight: "bolder",
+              }),
           }}
-          key="next"
+          key={`page-${i}`}
           onClick={() => {
             setCurrentPage(i);
           }}
@@ -282,7 +285,7 @@ const Remarkspending_review = () => {
             paddingLeft: "5px",
             textDecoration: "underline",
           }}
-          key="next"
+          key="next-page"
           onClick={() => {
             setCurrentPage(endPage + 1);
           }}
@@ -308,7 +311,7 @@ const Remarkspending_review = () => {
         //save the redux state api response data
         dispatch(setMemberReg("reviewCount", apiData.data.data));
       }
-    } catch (error:any) {
+    } catch (error: any) {
       if (error.response && error.response.status === 403) {
         console.log("403 error occurred");
       } else {
@@ -382,10 +385,10 @@ const Remarkspending_review = () => {
       if (apiData) {
         //to update the ui calling remark api and reset function clear textarea field
         fetchRemark(reviewButton);
-       // Check if the current page is lastpage then after aprroval the current page is set to current page - 1
-       if (currentPage === reviewData?.data.length && currentPage > 1) {
-        setCurrentPage((prevPage) => prevPage - 1);
-      }
+        // Check if the current page is lastpage then after aprroval the current page is set to current page - 1
+        if (currentPage === reviewData?.data.length && currentPage > 1) {
+          setCurrentPage((prevPage) => prevPage - 1);
+        }
         reset();
       }
     } catch (error) {
@@ -412,11 +415,11 @@ const Remarkspending_review = () => {
 
       if (apiData) {
         fetchRemark(reviewButton);
-      // Check if the current page is lastpage then after deletion the current page is set to current page - 1
-      if (currentPage === reviewData?.data.length && currentPage > 1) {
-        setCurrentPage((prevPage) => prevPage - 1);
-      }
-      reset();
+        // Check if the current page is lastpage then after deletion the current page is set to current page - 1
+        if (currentPage === reviewData?.data.length && currentPage > 1) {
+          setCurrentPage((prevPage) => prevPage - 1);
+        }
+        reset();
       }
     } catch (error) {
       console.log(error, "Error");
@@ -449,6 +452,7 @@ const Remarkspending_review = () => {
   const fetchEachRemark = (data: any) => {
     //set reviewButton name to state
     setReviewButton(data);
+    setCurrentPage(1);
 
     //pagination to selected room
     totalpageSetting();

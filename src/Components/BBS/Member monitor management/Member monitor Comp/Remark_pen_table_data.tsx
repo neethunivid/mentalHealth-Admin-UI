@@ -35,8 +35,8 @@ return "普通神経症の部屋";
             return "その他の部屋";
         }else if(reviewButton=="growingup"){
             return "成長の部屋";
-        }else if(reviewButton=="addition1"){
-            return "新規1";
+        }else if(reviewButton=="addition1" || reviewButton=="diary"){
+          return "日記";
         }else if(reviewButton=="addition2"){
             return "新規2";
         }
