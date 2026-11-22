@@ -710,44 +710,44 @@ const UserWithdrawn = () => {
 
                                                     <Grid container>
                                                         <InputComponent
-                                                            label="・名前（漢字）  名"
-                                                            control={control}
-                                                            defaultValue={itemData?.member?.name}
-                                                            textBoxEnabled={false}
-                                                            name={"name2"}
-                                                            type={"text"}
-                                                        />
-                                                    </Grid>
-
-
-                                                    <Grid container>
-                                                        <InputComponent
                                                             label="・名前（漢字）  姓"
                                                             control={control}
-                                                            defaultValue={itemData?.member?.name2}
+                                                            defaultValue={itemData?.member?.name}
                                                             textBoxEnabled={false}
                                                             name={"name"}
                                                             type={"text"}
                                                         />
                                                     </Grid>
 
+
                                                     <Grid container>
                                                         <InputComponent
-                                                            label="  ・ふりがな     名"
+                                                            label="・名前（漢字）  名"
+                                                            control={control}
+                                                            defaultValue={itemData?.member?.name2}
+                                                            textBoxEnabled={false}
+                                                            name={"name2"}
+                                                            type={"text"}
+                                                        />
+                                                    </Grid>
+
+                                                    <Grid container>
+                                                        <InputComponent
+                                                            label="・ふりがな     姓"
                                                             control={control}
                                                             defaultValue={itemData?.member?.namek}
                                                             textBoxEnabled={false}
-                                                            name={"namek2"}
+                                                            name={"namek"}
                                                             type={"text"}
                                                         />
                                                     </Grid>
                                                     <Grid container>
                                                         <InputComponent
-                                                            label="・ふりがな     姓"
+                                                            label="  ・ふりがな     名"
                                                             control={control}
                                                             defaultValue={itemData?.member?.namek2}
                                                             textBoxEnabled={false}
-                                                            name={"namek"}
+                                                            name={"namek2"}
                                                             type={"text"}
                                                         />
                                                     </Grid>
