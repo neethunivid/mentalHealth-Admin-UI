@@ -46,7 +46,7 @@ const Remark_pentopSelect = ({ handleClick, reviewButton }: any) => {
       </a>
       <span className="blacktxt">｜F.</span>
       <a
-        className={reviewButton == "addition1" ? "red_font_2" : "navtxt"}
+        className={reviewButton == "addition1" || reviewButton == "diary" ? "red_font_2" : "navtxt"}
         onClick={() => handleClick("addition1")}
       >
         日記

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import '../../../assets/css/health.css';
-import { Box,  Grid ,Button} from '@mui/material';
+import { Box, Grid, Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData, setMemberReg } from '../../../Redux/actions';
-import {  useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import LeftPanBBS from '../../Common/LeftPanBBS';
 import uparrow from '../../../assets/images/6th_arrow_top.gif'
 import downarrow from '../../../assets/images/6th_arrow_bottom.gif'
@@ -21,7 +21,7 @@ const MemberSearchList = () => {
     let searchflag: any
     const [rowsPerPage, setRowsPerPage] = useState<any>(10);
     const [sortModel, setSortModel] = useState<any>([]);
-    const [isLoaded,setLoaded]=useState(false)
+    const [isLoaded, setLoaded] = useState(false)
 
     //handle the pagesize selected by the user
     const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -45,10 +45,10 @@ const MemberSearchList = () => {
             renderCell: (params) => {
                 if (params.row.joinDate) {
                     return formatDateArray1(params?.row?.joinDate)
-                  }
-                  else{
+                }
+                else {
                     return null
-                  }
+                }
 
             },
             width: 100
@@ -86,7 +86,7 @@ const MemberSearchList = () => {
             width: 100, headerAlign: "center",
             headerClassName: "sixth_bdr_left_bottom hide-sort-icon",
             cellClassName: "dgridcolumn-cell",
-            align:"center",
+            align: "center",
             hideable: false,
             sortable: false,
             renderCell: (params) => {
@@ -112,7 +112,7 @@ const MemberSearchList = () => {
             cellClassName: "dgridcolumn-cell",
             hideable: false,
             sortable: false,
-            align:"center",
+            align: "center",
             renderCell: (params) => {
                 const handleToNGButtonClick = () => {
                     ToNgMember(params.id);
@@ -148,6 +148,7 @@ const MemberSearchList = () => {
         try {
             const apiData = await apiClient.get('api/members/blockMember/' + id);
             if (apiData) {
+                alert('会員をNGに設定しました。');
                 window.location.reload();
             }
         } catch (error) {
@@ -177,7 +178,7 @@ const MemberSearchList = () => {
         { value: '50', label: '50' },
         { value: '75', label: '75' },
         { value: '100', label: '100' },
-       
+
     ];
     const [pagesizevalue, setpagesizevalue] = useState<any>(10);
     const [sortField, setSortField] = useState()
@@ -207,7 +208,7 @@ const MemberSearchList = () => {
 
     //fetch member based on search request
     const fetchMember = async (pagesize: any, pageNumber: number = 1, sortField: any, sortOrder: any) => {
-        
+
         pageNumber -= 1;
         try {
             if (searchflag == 1) {
@@ -310,8 +311,8 @@ const MemberSearchList = () => {
 
                     </Grid>
                     <Grid className='hr' />
-                    {isLoaded &&data?.data &&
-                    
+                    {isLoaded && data?.data &&
+
                         <Grid>
                             <Grid xs={12}>
                                 <DataGrid
@@ -373,7 +374,7 @@ const MemberSearchList = () => {
                                 </Grid>
                                 <Grid className="p6red_bg_right size"></Grid>
                             </Grid>
-                        </Grid>} 
+                        </Grid>}
                 </Grid>
             </Grid>
         </Box>

@@ -37,18 +37,18 @@ import { checkDate, formatDateArray1, getCurrentDate } from "../../Common/Date_c
 const MemberEdit = () => {
     let id: any
     let items: any
-    let prefLists:any
-    let jobLists:any
+    let prefLists: any
+    let jobLists: any
     useEffect(() => {
         getPref();
         getJob();
         if (!memberData) {
             fetchMemberById()
         }
-        if(memberData){
+        if (memberData) {
             setSelectedCheckbox(memberData?.usertype[0]);
         }
-        
+
 
     }, []);
     const [apiMemberdata, setData] = useState<any>({})
@@ -92,7 +92,7 @@ const MemberEdit = () => {
     const currentDate1 = getCurrentDate();
     const [prefList, setPrefList] = useState<any>([]);
     const [jobList, setJobList] = useState<any>([]);
-    const memberData :any= useSelector((state: any) => state.memberData?.Memberdata_by_id);
+    const memberData: any = useSelector((state: any) => state.memberData?.Memberdata_by_id);
     const getDate = () => {
         const year = apiMemberdata?.data[0]?.date[0];
         const month = String(apiMemberdata?.data[0]?.date[1]).padStart(2, '0');
@@ -119,60 +119,60 @@ const MemberEdit = () => {
         }
     }
     const initializevalue = (data: any) => {
-        setRemarkInitial(data?.member?.remarks_initial) 
-        setSelectedCheckbox(!memberData??data?.member?.status === 1 ? "1" : data?.member?.status === 4 ? "2" : "3")           
-        if(data?.member?.email_pc){
-        const splitEmail = data?.member?.email_pc?.split('@');
-        setEmailpcuser(splitEmail[0])
-        setEmailpcDomain(splitEmail[1])
+        setRemarkInitial(data?.member?.remarks_initial)
+        setSelectedCheckbox(!memberData ?? data?.member?.status === 1 ? "1" : data?.member?.status === 4 ? "2" : "3")
+        if (data?.member?.email_pc) {
+            const splitEmail = data?.member?.email_pc?.split('@');
+            setEmailpcuser(splitEmail[0])
+            setEmailpcDomain(splitEmail[1])
         }
-        if(data?.member?.email_mob){
-        const splitmobEmail = data?.member?.email_mob?.split('@');
-        setEmailmobuser(splitmobEmail[0])
-        setEmailmobDomain(splitmobEmail[1])
+        if (data?.member?.email_mob) {
+            const splitmobEmail = data?.member?.email_mob?.split('@');
+            setEmailmobuser(splitmobEmail[0])
+            setEmailmobDomain(splitmobEmail[1])
         }
-        if(data?.member?.tel){
-        const tel = data?.member?.tel?.split('-')
-        setTel1(tel[0]);
-        setTel2(tel[1]);
-        setTel3(tel[2]);
+        if (data?.member?.tel) {
+            const tel = data?.member?.tel?.split('-')
+            setTel1(tel[0]);
+            setTel2(tel[1]);
+            setTel3(tel[2]);
         }
-        if(data?.member?.zipcode){
-        const zipcodeval = data?.member?.zipcode?.split('-');
-        setZipCode1(zipcodeval[0]);
-        setZipCode2(zipcodeval[1]);
+        if (data?.member?.zipcode) {
+            const zipcodeval = data?.member?.zipcode?.split('-');
+            setZipCode1(zipcodeval[0]);
+            setZipCode2(zipcodeval[1]);
         }
-        if(data?.member?.joinDate){
-            let formattedJoinDate =formatDateArray1(data?.member?.joinDate)
+        if (data?.member?.joinDate) {
+            let formattedJoinDate = formatDateArray1(data?.member?.joinDate)
             setJoindate(formattedJoinDate);
         }
-        if(data?.member?.changeDate){
-            let formattedChangeDate =formatDateArray1(data?.member?.changeDate)
+        if (data?.member?.changeDate) {
+            let formattedChangeDate = formatDateArray1(data?.member?.changeDate)
             setChangedate(formattedChangeDate);
         }
-        if(data?.member?.dob){
-        setdobyear(data?.member?.dob[0]);
-        setdobmonth(String(data?.member?.dob[1])?.padStart(2, '0'));
-        setdobday(String(data?.member?.dob[2])?.padStart(2, '0'))
+        if (data?.member?.dob) {
+            setdobyear(data?.member?.dob[0]);
+            setdobmonth(String(data?.member?.dob[1])?.padStart(2, '0'));
+            setdobday(String(data?.member?.dob[2])?.padStart(2, '0'))
         }
         setRemarkInitial(data?.member?.remarks_initial)
-       
+
         if (data?.member?.pref) {
             prefLists.map((item: any) => {
-              if (item.id == data?.member?.pref) {
-                Setprefvalue(item.name);
-              }
+                if (item.id == data?.member?.pref) {
+                    Setprefvalue(item.name);
+                }
             });
-          }
-          if (data?.member?.job) {
+        }
+        if (data?.member?.job) {
             jobLists.map((item: any) => {
-              if (item.id == data?.member?.job) {
-                Setoccupatvalue(item.name);
-              }
+                if (item.id == data?.member?.job) {
+                    Setoccupatvalue(item.name);
+                }
             });
-          }
+        }
     }
-    const onSubmit = async (data: any,event:any) => {
+    const onSubmit = async (data: any, event: any) => {
         if (!data.statement_title) {
             alert("発言タイトルを入力してください。");
             setError("statement_title", {
@@ -234,7 +234,7 @@ const MemberEdit = () => {
             });
             return
         } else if (!(data.dob1)) {
-           
+
             alert("生年月日には年を入力してください");
             setError("dob1", {
                 type: "required",
@@ -246,20 +246,20 @@ const MemberEdit = () => {
                 type: "required",
             });
             return
-        } else if (!(data.dob3)){
+        } else if (!(data.dob3)) {
             alert("生年月日には日付を入力してください");
             setError("dob3", {
                 type: "required",
             });
             return
-        } else if(!checkDate(`${data.dob1}-${data.dob2}-${data.dob3}`)){
-              alert("生年月日の正しい日付形式を入力してください");
-              setError("dob1", {
+        } else if (!checkDate(`${data.dob1}-${data.dob2}-${data.dob3}`)) {
+            alert("生年月日の正しい日付形式を入力してください");
+            setError("dob1", {
                 type: "required",
-              });
-              return;
-            
-          }
+            });
+            return;
+
+        }
         else if (!data.post1) {
             alert("郵便番号を入力してください。");
             setError("post1", {
@@ -267,14 +267,14 @@ const MemberEdit = () => {
             });
             return
         }
-         else if (!data.post2) {
+        else if (!data.post2) {
             alert("郵便番号を入力してください。");
             setError("post2", {
                 type: "required",
             });
             return
         }
-       else if (!data.address1) {
+        else if (!data.address1) {
             alert("市区郡町村を入力してください。");
             setError("address1", {
                 type: "required",
@@ -320,7 +320,7 @@ const MemberEdit = () => {
             setError("checkboxGroup5", {
                 type: "required",
             });
-            return 
+            return
         }
         else if (data.checkboxGroup5 == false && data.checkboxGroup5Title) {
             alert("新しい1を選択");
@@ -335,7 +335,7 @@ const MemberEdit = () => {
                 type: "required",
             });
             return
-        } 
+        }
 
         else if (data.checkboxGroup6 == false && data.checkboxGroup6Title) {
             alert("新しい2を選択");
@@ -343,80 +343,80 @@ const MemberEdit = () => {
                 type: "required",
             });
             return
-        } 
+        }
         else if (!(/^\d+$/.test(data.post1))) {
             alert("郵便番号を入力してください。");
             setError("post1", {
-              type: "required",
+                type: "required",
             });
             return;
-          } else if (!(/^\d+$/.test(data.post2))) {
+        } else if (!(/^\d+$/.test(data.post2))) {
             alert("郵便番号を入力してください。");
             setError("post2", {
-              type: "required",
+                type: "required",
             });
             return;
-          }
-          else if (!(checkDate(data.join_date))) {
-           
-              alert(`正しい日付形式を入力してください ${data.join_date}`);
-              setError("join_date", {
+        }
+        else if (!(checkDate(data.join_date))) {
+
+            alert(`正しい日付形式を入力してください ${data.join_date}`);
+            setError("join_date", {
                 type: "required",
-              });
-              return;
-          }
+            });
+            return;
+        }
         else if (data.usertype == false) {
             alert("状状況を選択してください");
             return
         }
-    else if(!data.email_pc1 &&data.email_pc2){
-        alert("メールアドレス1を正しく入力してください");
-      setError("email_pc1", {
-        type: "required",
-      });
-      return;
-      }else if(data.email_pc1 &&!data.email_pc2){
-        alert("メールアドレス2を正しく入力してください");
-        setError("email_pc2", {
-          type: "required",
-        });
-        return;
-      
+        else if (!data.email_pc1 && data.email_pc2) {
+            alert("メールアドレス1を正しく入力してください");
+            setError("email_pc1", {
+                type: "required",
+            });
+            return;
+        } else if (data.email_pc1 && !data.email_pc2) {
+            alert("メールアドレス2を正しく入力してください");
+            setError("email_pc2", {
+                type: "required",
+            });
+            return;
 
-      }else if(!data.email_mob1&&data.email_mob2){
-        alert("メールアドレス1を正しく入力してください");
-        setError("email_mob1", {
-          type: "required",
-        });
-        return;
-      }else if(data.email_mob1&&!data.email_mob2){
-        alert('メールアドレス2を正しく入力してください');
-        setError("email_mob2", {
-        type: "required",
-        });
-      }
-         else {
+
+        } else if (!data.email_mob1 && data.email_mob2) {
+            alert("メールアドレス1を正しく入力してください");
+            setError("email_mob1", {
+                type: "required",
+            });
+            return;
+        } else if (data.email_mob1 && !data.email_mob2) {
+            alert('メールアドレス2を正しく入力してください');
+            setError("email_mob2", {
+                type: "required",
+            });
+        }
+        else {
             if (data.change_date) {
                 if (!(checkDate(data.change_date))) {
-                  alert(`正しい日付形式を入力してください ${data.change_date}`);
-                  return;
+                    alert(`正しい日付形式を入力してください ${data.change_date}`);
+                    return;
                 }
-              }
+            }
 
             if (data.submitButton === 'submitButton') {
-            dispatch(setMemberReg("Memberdata_by_id", {
-                ...data, id: memberData ? memberData?.id : id,
-                remarkinitial: memberData ? memberData?.remarkinitial : remarkinitial
-            }));
-          
-            const userConfirmation = window.confirm("これで登録しますか? ");
-            if (userConfirmation) {
-                navigate('/membereditpreview');
-            } else {
-                // User clicked Cancel, do nothing or perform any additional actions
+                dispatch(setMemberReg("Memberdata_by_id", {
+                    ...data, id: memberData ? memberData?.id : id,
+                    remarkinitial: memberData ? memberData?.remarkinitial : remarkinitial
+                }));
+
+                const userConfirmation = window.confirm("これで登録しますか? ");
+                if (userConfirmation) {
+                    navigate('/membereditpreview');
+                } else {
+                    // User clicked Cancel, do nothing or perform any additional actions
+                }
             }
-            }
-            else{
+            else {
                 handledelete(data)
             }
         }
@@ -425,118 +425,118 @@ const MemberEdit = () => {
         setSelectedCheckbox(event.target.value);
     };
 
-     //get prefList
-  const getPref = async () => {
-    try {
-      const apiData = await apiClient.post("api/members/prefList", {});
-      if (apiData) {
-        prefLists=apiData.data.data
-        setPrefList(apiData.data.data)
-      }
-    } catch (error) {
-      alert(error);
-    }
-  };
+    //get prefList
+    const getPref = async () => {
+        try {
+            const apiData = await apiClient.post("api/members/prefList", {});
+            if (apiData) {
+                prefLists = apiData.data.data
+                setPrefList(apiData.data.data)
+            }
+        } catch (error) {
+            alert(error);
+        }
+    };
 
-  //get jobList
-  const getJob = async () => {
-    try {
-      const apiData = await apiClient.post("api/members/job", {});
-      if (apiData) {
-        jobLists=apiData.data.data
-        setJobList(apiData.data.data)
-      }
-    } catch (error) {}
-  };
-    const handledelete = async(data:any) => {
-        let pref:any;
-        let occupat:any
+    //get jobList
+    const getJob = async () => {
+        try {
+            const apiData = await apiClient.post("api/members/job", {});
+            if (apiData) {
+                jobLists = apiData.data.data
+                setJobList(apiData.data.data)
+            }
+        } catch (error) { }
+    };
+    const handledelete = async (data: any) => {
+        let pref: any;
+        let occupat: any
         const firstJobId = jobList.length > 0 ? jobList[0]?.id : null;
         const firstPrefId = prefList.length > 0 ? prefList[0]?.id : null;
         const confirmed = window.confirm('本当に削除しますか？');
-        if(confirmed){
-        const doB =data.dob1 +"-" +data.dob2 +"-" +data.dob3;
-        const formattedJoinDate = formatDate(data.join_date);
-        const formattedChangeDate = formatDate(data.change_date);
-       
-        if (data.prefecture) {
-            prefList.map((item: any) => {
-              if (item.name == data.prefecture) {
-                pref = item.id;
-              }
-            });
-          }
-          if (data.occupation) {
-            jobList.map((item: any) => {
-              if (item.name == data.occupation) {
-                occupat = item.id;
-              }
-            });
-          }
-        try {
-            const dataRequest: any = {
-                id:memberData?memberData?.id:apiMemberdata?.member?.id,
-                memberno: data.memberno,
-                name: data.name,
-                namek: data.namek,
-                name2: data.name2,
-                namek2: data.namek2,
-                memberid:data.memberid,
-                password: data.password,
-                sex: data.sex,
-                dob:data.dob1 +"-" +data.dob2 +"-" +data.dob3,
-                job: occupat ?? firstJobId,
-                job_additional: data.job_additional,
-                zipcode:
-                    data.post1 + "-" + data.post2,
-                pref: pref ?? firstPrefId,
-                address1: data.address1,
-                address2: data.address2,
-                address3: data.address3,
-                tel:
-                data.tel1 +
-                    "-" +
-                    data.tel2 +
-                    "-" +
-                    data.tel3,
-                mob: "",
-                workplace: data.workplace,
-                remarks_initial:memberData?memberData?.remarkinitial:apiMemberdata?.member?.remarks_initial,
-                howfound: data.howfound,
-                email_pc: data.email_pc1?`${data.email_pc1}@${data.email_pc2}`:"",
-                email_mob: data.email_mob1 ? `${data.email_mob1}@${data.email_mob2}` : "",
-                mailmagazine: data.mailmagazine,
-                // joinDate: memberData?.join_date ?? "",
-                joinDate: formattedJoinDate,
-                // changeDate: memberData?.change_date ?? "",
-                changeDate: formattedChangeDate,
-                changeCause:data.changeCause?? "",
-                status: 5,
-                ngMember: 0,
-                deleteRequest: 0,
-                date: new Date().toISOString().split('T')[0],
-                normal: data.checkboxGroup ? 1 : 0,
-                anxiety: data.checkboxGroup2 ? 1 : 0,
-                blackmail: data.checkboxGroup4 ? 1 : 0,
-                other: data.checkboxGroup1 ? 1 : 0,
-                growingup: data.checkboxGroup3 ? 1 : 0,
-                addition1: data.checkboxGroup5Title ? data.checkboxGroup5Title : "",
-                addition2: data.checkboxGroup6Title ? data.checkboxGroup6Title : "",
-                statement_title: data.statement_title ? data.statement_title : "",
-                statement_text: data.statement_text ? data.statement_text : "",
-            };
-            const apiData = await apiClient.put(
-                "api/members/admin/updatemember",
-                dataRequest,
-                {}
-            );
-            if (apiData) {
-                window.location.href = "/memberlist";
+        if (confirmed) {
+            const doB = data.dob1 + "-" + data.dob2 + "-" + data.dob3;
+            const formattedJoinDate = formatDate(data.join_date);
+            const formattedChangeDate = formatDate(data.change_date);
+
+            if (data.prefecture) {
+                prefList.map((item: any) => {
+                    if (item.name == data.prefecture) {
+                        pref = item.id;
+                    }
+                });
             }
-        } catch (error: any) {
-          console.error("Error:",error)
+            if (data.occupation) {
+                jobList.map((item: any) => {
+                    if (item.name == data.occupation) {
+                        occupat = item.id;
+                    }
+                });
+            }
+            try {
+                const dataRequest: any = {
+                    id: memberData ? memberData?.id : apiMemberdata?.member?.id,
+                    memberno: data.memberno,
+                    name: data.name,
+                    namek: data.namek,
+                    name2: data.name2,
+                    namek2: data.namek2,
+                    memberid: data.memberid,
+                    password: data.password,
+                    sex: data.sex,
+                    dob: data.dob1 + "-" + data.dob2 + "-" + data.dob3,
+                    job: occupat ?? firstJobId,
+                    job_additional: data.job_additional,
+                    zipcode:
+                        data.post1 + "-" + data.post2,
+                    pref: pref ?? firstPrefId,
+                    address1: data.address1,
+                    address2: data.address2,
+                    address3: data.address3,
+                    tel:
+                        data.tel1 +
+                        "-" +
+                        data.tel2 +
+                        "-" +
+                        data.tel3,
+                    mob: "",
+                    workplace: data.workplace,
+                    remarks_initial: memberData ? memberData?.remarkinitial : apiMemberdata?.member?.remarks_initial,
+                    howfound: data.howfound,
+                    email_pc: data.email_pc1 ? `${data.email_pc1}@${data.email_pc2}` : "",
+                    email_mob: data.email_mob1 ? `${data.email_mob1}@${data.email_mob2}` : "",
+                    mailmagazine: data.mailmagazine,
+                    // joinDate: memberData?.join_date ?? "",
+                    joinDate: formattedJoinDate,
+                    // changeDate: memberData?.change_date ?? "",
+                    changeDate: formattedChangeDate,
+                    changeCause: data.changeCause ?? "",
+                    status: 5,
+                    ngMember: 0,
+                    deleteRequest: 0,
+                    date: new Date().toISOString().split('T')[0],
+                    normal: data.checkboxGroup ? 1 : 0,
+                    anxiety: data.checkboxGroup2 ? 1 : 0,
+                    blackmail: data.checkboxGroup4 ? 1 : 0,
+                    other: data.checkboxGroup1 ? 1 : 0,
+                    growingup: data.checkboxGroup3 ? 1 : 0,
+                    addition1: data.checkboxGroup5Title ? data.checkboxGroup5Title : "",
+                    addition2: data.checkboxGroup6Title ? data.checkboxGroup6Title : "",
+                    statement_title: data.statement_title ? data.statement_title : "",
+                    statement_text: data.statement_text ? data.statement_text : "",
+                };
+                const apiData = await apiClient.put(
+                    "api/members/admin/updatemember",
+                    dataRequest,
+                    {}
+                );
+                if (apiData) {
+                    window.location.href = "/memberlist";
+                }
+            } catch (error: any) {
+                console.error("Error:", error)
+            }
         }
-    }
     };
     const formatDate = (dateString: string) => {
         if (!dateString) return "";
@@ -716,7 +716,7 @@ const MemberEdit = () => {
                                 <EditInputField
                                     firstrowHeading="・都道府県"
                                     name="prefecture"
-                                    defaultValue={memberData ? memberData.prefecture :prefvalue}
+                                    defaultValue={memberData ? memberData.prefecture : prefvalue}
                                     control={control}
                                     textInput={true}
                                     select1={true}
@@ -862,10 +862,10 @@ const MemberEdit = () => {
                                         defaultValue2={memberData ? memberData.checkboxGroup2 : apiMemberdata?.remarks[0]?.anxiety == 1 ? true : false}
                                         defaultValue3={memberData ? memberData.checkboxGroup3 : apiMemberdata?.remarks[0]?.growingup == 1 ? true : false}
                                         defaultValue4={memberData ? memberData.checkboxGroup4 : apiMemberdata?.remarks[0]?.blackmail == 1 ? true : false}
-                                        defaultValue5={memberData ? memberData.checkboxGroup5 : 
-                                            apiMemberdata?.remarks[0]?.addition1!==""&&apiMemberdata?.remarks[0]?.addition1!==null ? true : false}
-                                        defaultValue6={memberData ? memberData.checkboxGroup6 : 
-                                            apiMemberdata?.remarks[0]?.addition2!==""&&apiMemberdata?.remarks[0]?.addition2!==null ? true : false}
+                                        defaultValue5={memberData ? memberData.checkboxGroup5 :
+                                            apiMemberdata?.remarks[0]?.addition1 !== "" && apiMemberdata?.remarks[0]?.addition1 !== null ? true : false}
+                                        defaultValue6={memberData ? memberData.checkboxGroup6 :
+                                            apiMemberdata?.remarks[0]?.addition2 !== "" && apiMemberdata?.remarks[0]?.addition2 !== null ? true : false}
                                         defaultTitle1={memberData ? memberData.checkboxGroup5Title : apiMemberdata?.remarks[0]?.addition1}
                                         defaultTitle2={memberData ? memberData.checkboxGroup6Title : apiMemberdata?.remarks[0]?.addition2}
                                     />
@@ -1002,29 +1002,29 @@ const MemberEdit = () => {
                         </Grid>
                         <Grid className="hr"></Grid>
                         <Grid item xs={12}>
-                        <Grid container display={"flex"} justifyContent={"center"}>
-                        <Controller
-                            name="submitButton"
-                            control={control}
-                            defaultValue=""
-                            render={({ field }) => (
-                                <>
-                            <Button type="submit" name ="submitButton" value="submitButton2" >
-                                    <img className="padding_top" src={submit}
-                                     onClick={() => setValue('submitButton', 'submitButton')}
-                                     {...field} />
-                            </Button>
-                    
-                            <Button type="submit" name ="submitButton" value="submitButton2" >
-                                    <img className="padding_top" src={deletebtn}
-                                     onClick={() => setValue('submitButton', 'deleteButton')}
-                                     {...field} />
-                            </Button>
-          
-                                </>
-                             )}
-                            />
-                             </Grid>
+                            <Grid container display={"flex"} justifyContent={"center"}>
+                                <Controller
+                                    name="submitButton"
+                                    control={control}
+                                    defaultValue=""
+                                    render={({ field }) => (
+                                        <>
+                                            <Button type="submit" name="submitButton" value="submitButton2" >
+                                                <img className="padding_top" src={submit}
+                                                    onClick={() => setValue('submitButton', 'submitButton')}
+                                                    {...field} />
+                                            </Button>
+
+                                            <Button type="submit" name="submitButton" value="submitButton2" >
+                                                <img className="padding_top" src={deletebtn}
+                                                    onClick={() => setValue('submitButton', 'deleteButton')}
+                                                    {...field} />
+                                            </Button>
+
+                                        </>
+                                    )}
+                                />
+                            </Grid>
                         </Grid>
                     </form> : null}
             </Grid>

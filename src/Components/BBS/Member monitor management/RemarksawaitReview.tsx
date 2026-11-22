@@ -88,10 +88,10 @@ const Remarksawait_review = () => {
         counts: reviewCountData,
       };
       navigate("/remarkpending", { state: normalStateObj });
-    } else if (data == "addition1") {
+    } else if (data == "diary" || data == "addition1") {
       const normalStateObj = {
         param: "addition1",
-        count: reviewCountData?.addition1,
+        count: reviewCountData?.diary,
         typeDivision: "日記",
         counts: reviewCountData,
       };
@@ -154,10 +154,10 @@ const Remarksawait_review = () => {
           </Grid>
           <Remark_await_additionComp
             btn_name="日記へ"
-            reviewCountData={reviewCountData?.addition1}
+            reviewCountData={reviewCountData?.diary}
             //label="F.新規（１）名称"
             label="F. 日記"
-            handleClick={() => naviagteHandle("addition1")}
+            handleClick={() => naviagteHandle("diary")}
           />
           <Remark_await_additionComp
             btn_name="新規2へ"

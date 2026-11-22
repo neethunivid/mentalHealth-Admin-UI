@@ -265,6 +265,7 @@ const UserWithdrawn = () => {
           blackmail: blackmailChecked == false ? 0 : 1,
           other: otherChecked == false ? 0 : 1,
           growingup: growingupChecked == false ? 0 : 1,
+          diary: ischeckadd1Checked == false ? 0 : 1,
           addition1: Data?.addition1,
           addition2: Data?.addition2
 
