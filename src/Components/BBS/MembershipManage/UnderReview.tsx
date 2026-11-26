@@ -1087,7 +1087,7 @@ const UserWithdrawn = () => {
                                                                 }}
                                                             />
                                                             <label className="verdana">
-                                                                D.その他
+                                                                D.その他の部屋
                                                             </label>
                                                         </Grid>
                                                     </Grid>
