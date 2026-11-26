@@ -9,7 +9,8 @@ import apiClient from "../../../API/API-client";
 import submit from "../../../assets/images/btn_submit_new.gif";
 import back from "../../../assets/images/btn_back_new.gif";
 import { setMemberReg } from "../../../Redux/actions";
-import { getCurrentDate } from "../../Common/Date_conversion";
+import { checkDate, getCurrentDate } from "../../Common/Date_conversion";
+import moment from "moment";
 
 const MemberEditPreview = () => {
     const [shouldReload, setShouldReload] = useState(false);
@@ -132,6 +133,10 @@ const MemberEditPreview = () => {
 
     //update the member details
     const updateMember = async (data: any) => {
+        if (!checkDate(joinDate) || (changeDate && !checkDate(changeDate))) {
+            alert("正しい日付形式を入力してください");
+            return;
+        }
         const firstJobId = jobList.length > 0 ? jobList[0]?.id : null;
         const firstPrefId = prefList.length > 0 ? prefList[0]?.id : null;
         setButtonDisabled(true);
@@ -220,11 +225,8 @@ const MemberEditPreview = () => {
 
     const formatDate = (dateString: string) => {
         if (!dateString) return "";
-        const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, "0");
-        const day = String(date.getDate()).padStart(2, "0");
-        return `${year}-${month}-${day}`;
+        const date = moment(dateString, ["YYYY/MM/DD", "YYYY-MM-DD", "YYYY.MM.DD"], true);
+        return date.isValid() ? date.format("YYYY-MM-DD") : "";
     };
     return (
         <Grid container xs={12} padding={1} spacing={1}>
@@ -323,9 +325,14 @@ const MemberEditPreview = () => {
                                 <PreviewRightRow
                                     title="・発言タイトル"
                                     value={memberData?.statement_title} />
-                                <PreviewRightRow
-                                    title="・入会日"
-                                    value={memberData?.join_date} />
+                                <Grid className="content-row">
+                                    <Grid className="black" item xs={3} paddingBottom={0.5}>
+                                        <label htmlFor="preview-join-date">・入会日</label>
+                                    </Grid>
+                                    <Grid item xs={9}>
+                                        <input id="preview-join-date" type="date" className="bdr_text3" value={formatDate(joinDate)} max={`${new Date().getFullYear()}-12-31`} onChange={(event) => dispatch(setMemberReg("Memberdata_by_id", { ...memberData, join_date: event.target.value }))} />
+                                    </Grid>
+                                </Grid>
                                 <PreviewRightRow
                                     checkboxSize={checkboxValues.length + 2}
                                     typeInput={true}
@@ -334,9 +341,14 @@ const MemberEditPreview = () => {
                                 <PreviewRightRow
                                     title="・状況"
                                     value={memberEditSituation} />
-                                <PreviewRightRow
-                                    title="・変更日"
-                                    value={memberData?.change_date} />
+                                <Grid className="content-row">
+                                    <Grid className="black" item xs={3} paddingBottom={0.5}>
+                                        <label htmlFor="preview-change-date">・変更日</label>
+                                    </Grid>
+                                    <Grid item xs={9}>
+                                        <input id="preview-change-date" type="date" className="bdr_text3" value={formatDate(changeDate)} max={`${new Date().getFullYear()}-12-31`} onChange={(event) => dispatch(setMemberReg("Memberdata_by_id", { ...memberData, change_date: event.target.value }))} />
+                                    </Grid>
+                                </Grid>
                                 <PreviewRightRow
                                     title="・理由"
                                     value={memberData?.changeCause} />

@@ -45,11 +45,6 @@ const MemberEdit = () => {
         if (!memberData) {
             fetchMemberById()
         }
-        if (memberData) {
-            setSelectedCheckbox(memberData?.usertype[0]);
-        }
-
-
     }, []);
     const [apiMemberdata, setData] = useState<any>({})
     const {
@@ -84,7 +79,6 @@ const MemberEdit = () => {
     const [zipcode1, setZipCode1] = useState();
     const [zipcode2, setZipCode2] = useState();
     const [memberIdChecks, setMemberIdChecks] = useState<boolean>(false);
-    const [selectedCheckbox, setSelectedCheckbox] = useState<String>("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [prefvalue, Setprefvalue] = useState();
@@ -120,7 +114,16 @@ const MemberEdit = () => {
     }
     const initializevalue = (data: any) => {
         setRemarkInitial(data?.member?.remarks_initial)
-        setSelectedCheckbox(!memberData ?? data?.member?.status === 1 ? "1" : data?.member?.status === 4 ? "2" : "3")
+        const status = data?.member?.status === 1 ? "1" : data?.member?.status === 4 ? "2" : "3";
+        setValue("usertype", status);
+        const remark = data?.remarks?.[0];
+        setValue("checkboxGroup", remark?.normal === 1);
+        setValue("checkboxGroup1", remark?.other === 1);
+        setValue("checkboxGroup2", remark?.anxiety === 1);
+        setValue("checkboxGroup3", remark?.growingup === 1);
+        setValue("checkboxGroup4", remark?.blackmail === 1);
+        setValue("checkboxGroup5", Boolean(remark?.addition1));
+        setValue("checkboxGroup6", Boolean(remark?.addition2));
         if (data?.member?.email_pc) {
             const splitEmail = data?.member?.email_pc?.split('@');
             setEmailpcuser(splitEmail[0])
@@ -421,10 +424,6 @@ const MemberEdit = () => {
             }
         }
     };
-    const handleCheckboxChange = (event: any) => {
-        setSelectedCheckbox(event.target.value);
-    };
-
     //get prefList
     const getPref = async () => {
         try {
@@ -862,10 +861,8 @@ const MemberEdit = () => {
                                         defaultValue2={memberData ? memberData.checkboxGroup2 : apiMemberdata?.remarks[0]?.anxiety == 1 ? true : false}
                                         defaultValue3={memberData ? memberData.checkboxGroup3 : apiMemberdata?.remarks[0]?.growingup == 1 ? true : false}
                                         defaultValue4={memberData ? memberData.checkboxGroup4 : apiMemberdata?.remarks[0]?.blackmail == 1 ? true : false}
-                                        defaultValue5={memberData ? memberData.checkboxGroup5 :
-                                            apiMemberdata?.remarks[0]?.addition1 !== "" && apiMemberdata?.remarks[0]?.addition1 !== null ? true : false}
-                                        defaultValue6={memberData ? memberData.checkboxGroup6 :
-                                            apiMemberdata?.remarks[0]?.addition2 !== "" && apiMemberdata?.remarks[0]?.addition2 !== null ? true : false}
+                                        defaultValue5={memberData ? memberData.checkboxGroup5 : Boolean(apiMemberdata?.remarks?.[0]?.addition1)}
+                                        defaultValue6={memberData ? memberData.checkboxGroup6 : Boolean(apiMemberdata?.remarks?.[0]?.addition2)}
                                         defaultTitle1={memberData ? memberData.checkboxGroup5Title : apiMemberdata?.remarks[0]?.addition1}
                                         defaultTitle2={memberData ? memberData.checkboxGroup6Title : apiMemberdata?.remarks[0]?.addition2}
                                     />
@@ -896,69 +893,27 @@ const MemberEdit = () => {
                                     />
                                     <Grid className="hr"></Grid>
                                     <Grid container item xs={12}>
-                                        <Grid item xs={4} className="content-row">
-                                            <Controller
-                                                control={control}
-                                                defaultValue={"1"}
-                                                name="usertype"
-                                                render={({ field }) => (
-                                                    <>
-                                                        <input
-                                                            {...field}
-                                                            type="checkbox"
-                                                            id="user_type1"
-                                                            value="1"
-                                                            {...register("usertype")}
-                                                            checked={selectedCheckbox === "1"}
-                                                            onChange={handleCheckboxChange}
-                                                        />
-                                                    </>
-                                                )}
-                                            />
-
-                                            <label className="verdana">A .参加中</label>
-                                        </Grid>
-                                        <Grid item xs={4}>
-                                            <Controller
-                                                control={control}
-                                                name="usertype"
-                                                render={({ field }) => (
-                                                    <>
-                                                        <input
-                                                            {...field}
-                                                            type="checkbox"
-                                                            id="user_type2"
-                                                            value="2"
-                                                            {...register("usertype")}
-                                                            checked={selectedCheckbox === "2"}
-                                                            onChange={handleCheckboxChange}
-                                                        />
-                                                    </>
-                                                )}
-                                            />
-
-                                            <label className="verdana">B .利用中止</label>
-                                        </Grid>
-                                        <Grid item xs={4}>
-                                            <Controller
-                                                control={control}
-                                                name="usertype"
-                                                render={({ field }) => (
-                                                    <>
-                                                        <input
-                                                            {...field}
-                                                            type="checkbox"
-                                                            id="user_type3"
-                                                            value="3"
-                                                            {...register("usertype")}
-                                                            checked={selectedCheckbox === "3"}
-                                                            onChange={handleCheckboxChange}
-                                                        />
-                                                    </>
-                                                )}
-                                            />
-                                            <label className="verdana">D. 退会</label>
-                                        </Grid>
+                                        <Controller
+                                            control={control}
+                                            name="usertype"
+                                            defaultValue={memberData?.usertype?.[0] ?? "1"}
+                                            render={({ field }) => (
+                                                <>
+                                                    <Grid item xs={4} className="content-row">
+                                                        <input {...field} type="checkbox" id="user_type1" value="1" checked={field.value === "1"} onChange={() => field.onChange("1")} />
+                                                        <label htmlFor="user_type1" className="verdana">A .参加中</label>
+                                                    </Grid>
+                                                    <Grid item xs={4}>
+                                                        <input {...field} type="checkbox" id="user_type2" value="2" checked={field.value === "2"} onChange={() => field.onChange("2")} />
+                                                        <label htmlFor="user_type2" className="verdana">B .利用中止</label>
+                                                    </Grid>
+                                                    <Grid item xs={4}>
+                                                        <input {...field} type="checkbox" id="user_type3" value="3" checked={field.value === "3"} onChange={() => field.onChange("3")} />
+                                                        <label htmlFor="user_type3" className="verdana">D. 退会</label>
+                                                    </Grid>
+                                                </>
+                                            )}
+                                        />
                                     </Grid>
                                     <Grid className="hr"></Grid>
 

@@ -53,9 +53,10 @@ const AutomaticApproval = () => {
         notes: "",
         id: autoApproval?.data[0]?.id,
       };
-    
+
       const apiData = await apiClient.put("api/updateConfig", dataRequest, {});
       if (apiData) {
+        alert("自動承認設定を正常に更新しました。");
       }
     } catch (error) {
       console.log("Error in automatic approval", error);
@@ -126,7 +127,7 @@ const AutomaticApproval = () => {
                         value="保存する"
                       />
                       <input
-                      
+
                         className="toggle-switch-buttons cursor_pointer"
                         type="reset"
                         name="btn_2"
