@@ -709,7 +709,7 @@ const UserWithdrawn = () => {
                                                         />
                                                     </Grid>
 
-                                                      <Grid container>
+                                                    <Grid container>
                                                         <InputComponent
                                                             label="・名前（漢字）  姓"
                                                             control={control}
@@ -740,7 +740,7 @@ const UserWithdrawn = () => {
                                                             type={"text"}
                                                         />
                                                     </Grid>
-                                                  
+
                                                     <Grid container>
                                                         <InputComponent
                                                             label="  ・ふりがな     名"
@@ -1086,7 +1086,7 @@ const UserWithdrawn = () => {
                                                                 }}
                                                             />
                                                             <label className="verdana">
-                                                                D.その他の部屋
+                                                                D. うつ他の部屋
                                                             </label>
                                                         </Grid>
                                                     </Grid>

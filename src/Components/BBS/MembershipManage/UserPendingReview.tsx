@@ -601,7 +601,7 @@ const UserPendingReview = () => {
                                                         type={"text"}
                                                     />
                                                 </Grid>
-                                               <Grid container>
+                                                <Grid container>
                                                     <InputComponent
                                                         label="・ふりがな     姓"
                                                         control={control}
@@ -951,7 +951,7 @@ const UserPendingReview = () => {
                                                             }}
                                                         />
                                                         <label className="verdana">
-                                                            D.その他
+                                                            D. うつ他の部屋
                                                         </label>
                                                     </Grid>
                                                 </Grid>
