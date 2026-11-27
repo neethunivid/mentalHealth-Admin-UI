@@ -711,7 +711,7 @@ const UserWithdrawn = () => {
 
                                                       <Grid container>
                                                         <InputComponent
-                                                            label="・名前（漢字）  名"
+                                                            label="・名前（漢字）  姓"
                                                             control={control}
                                                             defaultValue={itemData?.member?.name2}
                                                             textBoxEnabled={false}
@@ -722,7 +722,7 @@ const UserWithdrawn = () => {
 
                                                     <Grid container>
                                                         <InputComponent
-                                                            label="・名前（漢字）  姓"
+                                                            label="・名前（漢字）  名"
                                                             control={control}
                                                             defaultValue={itemData?.member?.name}
                                                             textBoxEnabled={false}
