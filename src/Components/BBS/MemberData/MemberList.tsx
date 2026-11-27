@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState} from 'react';
-import { DataGrid, GridColDef} from '@mui/x-data-grid';
+import React, { useEffect, useRef, useState } from 'react';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import '../../../assets/css/health.css';
-import { Box,  Grid,Button} from '@mui/material';
+import { Box, Grid, Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData, setMemberReg } from '../../../Redux/actions';
 import { useLocation } from 'react-router-dom';
@@ -20,7 +20,7 @@ const MemberListComponent = () => {
   let searchrequest: any
   let searchflag: any
   const [rowsPerPage, setRowsPerPage] = useState<any>(10);
-  
+
   //function to display the data depending upon the selected pagesize
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setRowsPerPage(event.target.value);
@@ -44,7 +44,7 @@ const MemberListComponent = () => {
         if (params.row.joinDate) {
           return formatDateArray1(params?.row?.joinDate)
         }
-        else{
+        else {
           return null
         }
 
@@ -96,7 +96,7 @@ const MemberListComponent = () => {
         return (
 
           <Button onClick={handleEditButtonClick} className="sixth_right_btn cursor_pointer ">
-           <span className='black_link'> 編集</span>
+            <span className='black_link'> 編集</span>
           </Button>
 
         );
@@ -146,13 +146,14 @@ const MemberListComponent = () => {
     try {
       const apiData = await apiClient.get('api/members/blockMember/' + id);
       if (apiData) {
+        alert('会員をNGに設定しました。');
         window.location.reload();
       }
     } catch (error) {
       console.error('Error updating ngMember status:', error);
     }
   };
-  
+
   //function to unblock a member
   const ToNgReleaseMember = async (id: any) => {
     try {
@@ -175,8 +176,8 @@ const MemberListComponent = () => {
     { value: '50', label: '50' },
     { value: '75', label: '75' },
     { value: '100', label: '100' },
-   
-];
+
+  ];
   const [pagesizevalue, setpagesizevalue] = useState<any>(10);
   const [sortField, setSortField] = useState()
   const [sortOrder, setSortOrder] = useState()
@@ -267,7 +268,7 @@ const MemberListComponent = () => {
         <span>{column.column.colDef.headerName}</span>
         {column.column.field != "edit" && column.column.field != "NG" ?
           <div className='sort-arrow-container'>
-            <img src={uparrow} className='sortarrow'  onClick={() => { handleSortClick(column.column.field, "ASC") }} />
+            <img src={uparrow} className='sortarrow' onClick={() => { handleSortClick(column.column.field, "ASC") }} />
             <img src={downarrow} className='sortarrow' onClick={() => { handleSortClick(column.column.field, "DESC") }} />
           </div>
           : null}
@@ -306,69 +307,69 @@ const MemberListComponent = () => {
 
           </Grid>
           <Grid className='hr' />
-          
-            <Grid>
-              <Grid xs={12}>
-                <DataGrid
-                  sx={{
-                    '.MuiDataGrid-iconButtonContainer': {
-                      visibility: 'visible',
-                    },
-                    '.MuiDataGrid-sortIcon': {
-                      opacity: 'inherit !important',
-                    },
-                  }}
-                  // columns={columns}
-                  columns={columns.map((col) => ({
-                    ...col,
-                    renderHeader: (params: any) => <CustomHeader column={params} />,
-                  }))}
-                  rows={data?.data ?? []}
-                  getRowClassName={getRowClassName}
-                  disableColumnMenu={true}
-                  autoHeight
-                  getRowHeight={() => "auto"}
-                  localeText={{ noRowsLabel: "結果はありません。" }}
-                  hideFooter
-                  hideFooterSelectedRowCount
 
-                />
-              </Grid>
-              <Grid className='hr'></Grid>
-              <Grid className="content-row">
-                <Grid className="p6red_bg_left size"></Grid>
-                <Grid xs={12} container className="p6red_bg_midle">
-                  <Grid xs={4} className="black"></Grid>
-                  <Grid xs={4} className="black">
-                    <Grid
-                      container
-                      flexDirection={"row"}
-                      justifyContent={"center"}
-                      alignSelf={"center"}
-                      padding={1}
+          <Grid>
+            <Grid xs={12}>
+              <DataGrid
+                sx={{
+                  '.MuiDataGrid-iconButtonContainer': {
+                    visibility: 'visible',
+                  },
+                  '.MuiDataGrid-sortIcon': {
+                    opacity: 'inherit !important',
+                  },
+                }}
+                // columns={columns}
+                columns={columns.map((col) => ({
+                  ...col,
+                  renderHeader: (params: any) => <CustomHeader column={params} />,
+                }))}
+                rows={data?.data ?? []}
+                getRowClassName={getRowClassName}
+                disableColumnMenu={true}
+                autoHeight
+                getRowHeight={() => "auto"}
+                localeText={{ noRowsLabel: "結果はありません。" }}
+                hideFooter
+                hideFooterSelectedRowCount
+
+              />
+            </Grid>
+            <Grid className='hr'></Grid>
+            <Grid className="content-row">
+              <Grid className="p6red_bg_left size"></Grid>
+              <Grid xs={12} container className="p6red_bg_midle">
+                <Grid xs={4} className="black"></Grid>
+                <Grid xs={4} className="black">
+                  <Grid
+                    container
+                    flexDirection={"row"}
+                    justifyContent={"center"}
+                    alignSelf={"center"}
+                    padding={1}
+                  >
+                    <span className="black">列を表示</span>
+                    <select
+                      value={selectedValue}
+                      onChange={handleChangeRowsPerPage}
                     >
-                      <span className="black">列を表示</span>
-                      <select
-                        value={selectedValue}
-                        onChange={handleChangeRowsPerPage}
-                      >
-                        defaultValue={pagesizeOption[0].label}
-                        {pagesizeOption.map((option) => (
-                          <option key={option.value} value={option.label}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                      <Grid></Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid xs={4}>
-                    {data?.data && getPageInfo(data)}
+                      defaultValue={pagesizeOption[0].label}
+                      {pagesizeOption.map((option) => (
+                        <option key={option.value} value={option.label}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                    <Grid></Grid>
                   </Grid>
                 </Grid>
-                <Grid className="p6red_bg_right size"></Grid>
+                <Grid xs={4}>
+                  {data?.data && getPageInfo(data)}
+                </Grid>
               </Grid>
+              <Grid className="p6red_bg_right size"></Grid>
             </Grid>
+          </Grid>
         </Grid>
 
       </Grid>

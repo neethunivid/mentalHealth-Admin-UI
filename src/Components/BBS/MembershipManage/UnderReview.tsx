@@ -269,6 +269,7 @@ const UserWithdrawn = () => {
                 blackmail: blackmailChecked == false ? 0 : 1,
                 other: otherChecked == false ? 0 : 1,
                 growingup: growingupChecked == false ? 0 : 1,
+                diary: ischeckadd1Checked == false ? 0 : 1,
                 addition1: itemData?.remarks[0]?.addition1,
                 addition2: itemData?.remarks[0]?.addition2,
 
@@ -710,22 +711,22 @@ const UserWithdrawn = () => {
 
                                                       <Grid container>
                                                         <InputComponent
-                                                            label="・名前（漢字）  姓"
+                                                            label="・名前（漢字）  名"
                                                             control={control}
                                                             defaultValue={itemData?.member?.name2}
                                                             textBoxEnabled={false}
-                                                            name={"name"}
+                                                            name={"name2"}
                                                             type={"text"}
                                                         />
                                                     </Grid>
 
                                                     <Grid container>
                                                         <InputComponent
-                                                            label="・名前（漢字）  名"
+                                                            label="・名前（漢字）  姓"
                                                             control={control}
                                                             defaultValue={itemData?.member?.name}
                                                             textBoxEnabled={false}
-                                                            name={"name2"}
+                                                            name={"name"}
                                                             type={"text"}
                                                         />
                                                     </Grid>
@@ -1085,7 +1086,7 @@ const UserWithdrawn = () => {
                                                                 }}
                                                             />
                                                             <label className="verdana">
-                                                                D.その他
+                                                                D.その他の部屋
                                                             </label>
                                                         </Grid>
                                                     </Grid>
