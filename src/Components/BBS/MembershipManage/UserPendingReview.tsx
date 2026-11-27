@@ -581,19 +581,9 @@ const UserPendingReview = () => {
                                         />
                                     </Grid>
 
-                                    <Grid container>
+                                     <Grid container>
                                         <InputComponent
                                             label="・名前（漢字）  姓"
-                                            control={control}
-                                            defaultValue={itemData?.member?.name}
-                                            textBoxEnabled={false}
-                                            name={"name"}
-                                            type={"text"}
-                                        />
-                                    </Grid>
-                                    <Grid container>
-                                        <InputComponent
-                                            label="・名前（漢字）  名"
                                             control={control}
                                             defaultValue={itemData?.member?.name2}
                                             textBoxEnabled={false}
@@ -603,17 +593,18 @@ const UserPendingReview = () => {
                                     </Grid>
                                     <Grid container>
                                         <InputComponent
-                                            label="・ふりがな     姓"
+                                           label="・名前（漢字）  名"
                                             control={control}
-                                            defaultValue={itemData?.member?.namek}
+                                            defaultValue={itemData?.member?.name}
                                             textBoxEnabled={false}
-                                            name={"namek"}
+                                            name={"name"}
                                             type={"text"}
                                         />
                                     </Grid>
-                                    <Grid container>
+
+                                     <Grid container>
                                         <InputComponent
-                                            label="  ・ふりがな     名"
+                                            label="・ふりがな     姓"
                                             control={control}
                                             defaultValue={itemData?.member?.namek2}
                                             textBoxEnabled={false}
@@ -621,6 +612,17 @@ const UserPendingReview = () => {
                                             type={"text"}
                                         />
                                     </Grid>
+                                    <Grid container>
+                                        <InputComponent
+                                           label="  ・ふりがな     名"
+                                            control={control}
+                                            defaultValue={itemData?.member?.namek}
+                                            textBoxEnabled={false}
+                                            name={"namek"}
+                                            type={"text"}
+                                        />
+                                    </Grid>
+                                   
                                     <Grid container>
                                         <InputComponent
                                             label="・ID"
